@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "username": "Julio",
+    "firstName": "Jules",
+    "surname": "Dubois",
+    "profilePic": "jules_dubois.jpg",
+    "password": "mypsw",
+    "groups": [
+        {
+            "groupId": 1,
+            "status": "admin"
+          }
+    ]
+  },
+  {
+    "id": 2,
+    "username": "Benji",
+    "firstname": "Benjamin",
+    "surname": "Sever",
+    "profilePic": "benjamin_sever.jpg",
+    "password": "benpsw",
+    "groups": [
+        {
+            "groupId": 1,
+            "status": "member"
+          },
+          {
+            "groupId": 2,
+            "status": "admin"
+          }
+    ]
+  },
+  {
+    "id": 3,
+    "username": "fifaGoat",
+    "firstname": "Bor",
+    "surname": "Sullin",
+    "profilePic": "bor_sullin.jpg",
+    "password": "borpsw",
+    "groups": [
+      {
+        "groupId": 1,
+        "status": "member"
+      },
+      {
+        "groupId": 2,
+        "status": "member"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "username": "british",
+    "firstname": "Josepf",
+    "surname": "Bloomer",
+    "profilePic": "joseph_bloomer.jpg",
+    "password": "jopsw",
+    "groups": [
+        {
+            "groupId": 1,
+            "status": "member"
+          }
+    ]
+  },
+  {
+    "id": 5,
+    "username": "Giu",
+    "firstname": "Giulia",
+    "surname": "idk",
+    "profilePic": "giulia_idk.jpg",
+    "password": "gupsw",
+    "groups": [
+        {
+            "groupId": 1,
+            "status": "member"
+          }
+    ]
+  }
+]

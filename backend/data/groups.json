@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "name": "The Locals",
+    "membersId": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "id": 2,
+    "name": "The Slovenians",
+    "membersId": [
+      2,
+      3
+    ]
+  }
+]
