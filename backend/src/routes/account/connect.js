@@ -3,28 +3,28 @@ const router = express.Router();
 const fs = require('fs');
 
 router.post("/",async (request,response,_next)=>{
-    fs.readFile("../data/profiles.json", 'utf8', (err, data) => {
-		if (err) {
-			console.error("An error occured while reading the file : ", err);
-			response.status(500);
-			return;
+	let profilesData = fs.readFileSync("../data/profiles.json", {encoding: 'utf8', flag: 'r'});
+    let profiles = JSON.parse(profilesData);
+    //Array of every profile.
+
+	var lenUserList = profiles.length;
+	var i = 0;
+	while (i!=lenUserList){
+		if (profiles[i].username === request.body.username && profiles[i].password ===  request.body.password){
+			//Tcheck if a password and an username matched in the database.
+
+			response.send(`Connected as ${profiles[i].username}.`);
+			let currentUserId = profiles[i].id;
+			module.exports = currentUserId;
+			//It permits to other files to know which user is connected.
+
+			break;
 		}
-		var jsonData = JSON.parse(data);
-		var lenUserList = jsonData.length;
-		var i = 0;
-		while (i!=lenUserList){
-			if (jsonData[i].username === request.body.username && jsonData[i].password ===  request.body.password){
-				response.send(`Connected as ${jsonData[i].username}.`);
-				let currentUserId = jsonData[i].id;
-				module.exports = currentUserId;
-				break;
-			}
-			i++;
-		}
-		if (i==lenUserList)
-			response.send("Username and password doesn't match.")
-		response.status(200);
-	});
+		i++;
+	}
+	if (i==lenUserList)
+		response.send("Username and password doesn't match.")
+	response.status(200);
 });
 
 module.exports = router;

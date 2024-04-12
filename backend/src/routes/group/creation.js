@@ -1,57 +1,48 @@
 const express = require("express");
 const router = express.Router();
 const fs = require('fs');
+const getUserIndexFromId = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
     let currentUserId = require("../account/connect");
-    fs.readFile("../data/groups.json", 'utf8', (err, dataGroup) => {
-		if (err) {
-			console.error("An error occured while reading the file : ", err);
-			response.status(500);
-			return;
-		}
-        let groupDataJsObject = JSON.parse(dataGroup);
-        let lenGroupList = groupDataJsObject.length;
-        let group = {
-            "groupId" : lenGroupList>0 ? groupDataJsObject[lenGroupList-1].id + 1 : 1,
-            "status" : "admin"
-        };
-        fs.readFile("../data/profiles.json", 'utf8', (err, dataProfiles) => {
-            if (err) {
-                console.error("An error occured while reading the file : ", err);
-                response.status(500);
-                return;
-            }
-            let profilesData = JSON.parse(dataProfiles);
-            for (i=0; i!=profilesData.length;i++){
-                if (profilesData[i].id === currentUserId)
-                    profilesData[i].groups.push(group);
-            }
-            let updatedProfilesData = JSON.stringify(profilesData, null, 2);
-            fs.writeFile("../data/profiles.json", updatedProfilesData, (err) => {
-                if (err) {
-                console.error("An error occured while writing the file : ", err);
-                response.status(500);
-                return;
-                }
-            })
-        });
-        let newGroup = {
-            "id" : lenGroupList>0 ? groupDataJsObject[lenGroupList-1].id + 1 : 1,
-            "name" : request.body.name,
-            "member" : [currentUserId]
-        };
-        groupDataJsObject.push(newGroup);
-        let updatedGroupData = JSON.stringify(groupDataJsObject, null, 2);
-        fs.writeFile("../data/groups.json", updatedGroupData, (err) => {
-            if (err) {
-            console.error("An error occured while writing the file : ", err);
-            response.status(500);
-            return;
-            }
-            response.send("New Group added to your profile.")
-        })
-    })
+    //Connected user.
+
+    let dataGroup = fs.readFileSync("../data/groups.json", {encoding: 'utf8', flag: 'r'});
+    let groups = JSON.parse(dataGroup);
+    //Array of every group.
+
+    let lenGroupList = groups.length;
+    let group = {
+        "groupId" : lenGroupList>0 ? groups[lenGroupList-1].id + 1 : 1,
+        "status" : "admin"
+    };
+    //New user information.
+
+    let profilesData = fs.readFileSync("../data/profiles.json", {encoding: 'utf8', flag: 'r'});
+    let profiles = JSON.parse(dataProfiles);
+    //Array of every profile.
+
+    profilesData[getUserIndexFromId(currentUserId)].groups.push(group);
+    //Group added to the profile.
+
+    let updatedProfilesData = JSON.stringify(profiles, null, 2);
+    fs.writeFileSync("../data/profiles.json", updatedProfilesData);
+    //Data update in database.
+
+    let newGroup = {
+        "groupId" : lenGroupList>0 ? groups[lenGroupList-1].id + 1 : 1,
+        "name" : request.body.name,
+        "membersId" : [currentUserId]
+    };
+    //New group informations.
+
+    groups.push(newGroup);
+    let updatedGroupData = JSON.stringify(groups, null, 2);
+    fs.writeFileSync("../data/groups.json", updatedGroupData);
+    //Data update.
+
+
+    response.send("New Group added to your profile.")
     response.status(200);
 });
 
