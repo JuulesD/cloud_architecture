@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const fs = require('fs');
-const { getUserIndexFromId, getGroupIndex } = require("../usefulFunctions");
+const { getUserIndexFromId, getGroupIndexFromId } = require("../usefulFunctions");
 
 function removeUser(profiles,groups,idIndex,currentUserId){
 
@@ -12,7 +12,6 @@ function removeUser(profiles,groups,idIndex,currentUserId){
 
     //First part is about removing user from every group. 
     for(i=0;i!=groups.length;i++){
-        console.log(`i: ${i}, len: ${groups.length}`);
         let j = 0;
         let nbMembers = groups[i].membersId.length;
         //Number of member in the current group.
@@ -31,14 +30,14 @@ function removeUser(profiles,groups,idIndex,currentUserId){
                             //Tcheck the index of the user in the array. If he is at the end, the new admin
                             //will be the first of the array.
                             let newAdminIndex = getUserIndexFromId(groups[i].membersId[0],profiles);
-                            let newAdminGroupIndex = getGroupIndex(groups[i].groupId,profiles[newAdminIndex].groups);
+                            let newAdminGroupIndex = getGroupIndexFromId(groups[i].groupId,profiles[newAdminIndex].groups);
                             profiles[newAdminIndex].groups[newAdminGroupIndex].status = "admin";
                             //Update the new admin.
                         }
                         else{
                             //If the user is not at the last position, the last person of the list will be the admin.
                             let newAdminIndex = getUserIndexFromId(groups[i].membersId[nbMembers-1],profiles);
-                            let newAdminGroupIndex = getGroupIndex(groups[i].groupId,profiles[newAdminIndex].groups);
+                            let newAdminGroupIndex = getGroupIndexFromId(groups[i].groupId,profiles[newAdminIndex].groups);
                             profiles[newAdminIndex].groups[newAdminGroupIndex].status = "admin";
                         }
                         break;
@@ -66,7 +65,7 @@ function removeUser(profiles,groups,idIndex,currentUserId){
     //User is deleted and the json profiles file update.
 }
 
-router.post("/",async (request,response,_next)=>{
+router.post("/",async (_request,response,_next)=>{
     let currentUserId = require("./connect");
     //Connected user.
 
@@ -77,11 +76,11 @@ router.post("/",async (request,response,_next)=>{
     let idIndex = getUserIndexFromId(currentUserId,profiles);
     //Profile of the connected user.
 
-    let groupsData = fs.readFileSync("../data/groups.json", { encoding: 'utf8', flag: 'r' });
-    let groups = JSON.parse(groupsData);
-    //Array of every group.
-
     if (idIndex != -1){
+        let groupsData = fs.readFileSync("../data/groups.json", { encoding: 'utf8', flag: 'r' });
+        let groups = JSON.parse(groupsData);
+        //Array of every group.
+
         removeUser(profiles,groups ,idIndex,currentUserId);
         response.send("Account deleted.");
         response.status(200);
@@ -92,7 +91,6 @@ router.post("/",async (request,response,_next)=>{
         return;
     }
 })
-
 
 module.exports = router;
 

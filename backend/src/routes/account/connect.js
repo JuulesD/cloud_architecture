@@ -14,7 +14,7 @@ router.post("/",async (request,response,_next)=>{
 			//Tcheck if a password and an username matched in the database.
 
 			response.send(`Connected as ${profiles[i].username}.`);
-			let currentUserId = profiles[i].id;
+			let currentUserId = profiles[i].userId;
 			module.exports = currentUserId;
 			//It permits to other files to know which user is connected.
 

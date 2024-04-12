@@ -5,7 +5,6 @@
     "membersId": [
       1,
       2,
-      6,
       3,
       4,
       5
@@ -23,15 +22,41 @@
     "groupId": 3,
     "name": "test",
     "membersId": [
-      1,
-      6
+      1
+    ]
+  },
+  {
+    "groupId": 3,
+    "name": "test",
+    "membersId": [
+      1
     ]
   },
   {
     "groupId": 4,
     "name": "nearlydead",
     "membersId": [
-      6,
+      1
+    ]
+  },
+  {
+    "groupId": 4,
+    "name": "nearlydead",
+    "membersId": [
+      1
+    ]
+  },
+  {
+    "groupId": 5,
+    "name": "oeoeoe",
+    "membersId": [
+      1
+    ]
+  },
+  {
+    "groupId": 5,
+    "name": "oeoeoe",
+    "membersId": [
       1
     ]
   }

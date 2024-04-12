@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "userId": 1,
     "username": "Julio",
     "firstName": "Jules",
     "surname": "Dubois",
@@ -17,13 +17,17 @@
       },
       {
         "groupId": 4,
-        "status": "member"
+        "status": "admin"
+      },
+      {
+        "groupId": 5,
+        "status": "admin"
       }
     ],
     "waiting": []
   },
   {
-    "id": 2,
+    "userId": 2,
     "username": "Benji",
     "firstname": "Benjamin",
     "surname": "Sever",
@@ -39,10 +43,15 @@
         "status": "admin"
       }
     ],
-    "waiting": []
+    "waiting": [
+      {
+        "senderId": 6,
+        "groupId": 5
+      }
+    ]
   },
   {
-    "id": 3,
+    "userId": 3,
     "username": "fifaGoat",
     "firstname": "Bor",
     "surname": "Sullin",
@@ -60,13 +69,13 @@
     ],
     "waiting": [
       {
-        "sender": 1,
-        "group": "test"
+        "senderId": 1,
+        "groupId": 3
       }
     ]
   },
   {
-    "id": 4,
+    "userId": 4,
     "username": "british",
     "firstname": "Josepf",
     "surname": "Bloomer",
@@ -81,7 +90,7 @@
     "waiting": []
   },
   {
-    "id": 5,
+    "userId": 5,
     "username": "Giu",
     "firstname": "Giulia",
     "surname": "idk",
@@ -91,29 +100,6 @@
       {
         "groupId": 1,
         "status": "member"
-      }
-    ],
-    "waiting": []
-  },
-  {
-    "id": 6,
-    "username": "john",
-    "firstname": "john",
-    "surname": "doe",
-    "profilePic": "john_doe.jpg",
-    "password": "jpsw",
-    "groups": [
-      {
-        "groupId": 1,
-        "status": "member"
-      },
-      {
-        "groupId": 3,
-        "status": "member"
-      },
-      {
-        "groupId": 4,
-        "status": "admin"
       }
     ],
     "waiting": []

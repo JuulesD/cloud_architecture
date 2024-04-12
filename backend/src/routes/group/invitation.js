@@ -1,47 +1,71 @@
 const express = require("express");
 const router = express.Router();
 const fs = require('fs');
+const {getUserIndexFromId} = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
     let currentUserId = require("../account/connect");
     //Connected user.
-
-    let profilesData = fs.readFileSync("../data/profiles.json", { encoding: 'utf8', flag: 'r' });
+ 
+    let profilesData = fs.readFileSync("../data/profiles.json", {encoding: 'utf8', flag: 'r'});
     let profiles = JSON.parse(profilesData);
     //Array of every profile.
+    
+    let senderIndex = getUserIndexFromId(currentUserId,profiles);
+    //Current user.
+    if (senderIndex != -1){
 
-    let lenProfiles = profiles.length;
-    let i = 0;
-    while (i!=lenProfiles){
-        //Tcheck if username exists.
-        if (profiles[i].username === request.body.username){
-            for (j=0;j!=profiles[i].groups.length;j++){
-                if (profiles[i].groups[j][1] === request.body.group){
+        let receiverIndex = getUserIndexFromId(request.body.userId,profiles);
+
+        if (receiverIndex===-1){
+            response.send("No username found.");
+        }
+        else{
+            let userProfile = profiles[receiverIndex];
+            //Current user profile.
+
+            for (j=0;j!=userProfile.groups.length;j++){
+                if (userProfile.groups[j].groupId === request.body.groupId){
                     response.send("User already in the group.");
                     break;
                 }
             }
+
+            for (j=0;j!=userProfile.waiting.length;j++){
+                if (userProfile.waiting[j].groupId === request.body.groupId){
+                    response.send("User already received an invitation.");
+                    break;
+                }
+            }
+
             let invitation = {
-                "sender":currentUserId,
-                "group":request.body.group
+                "userId":currentUserId,
+                "groupId":request.body.groupId
             };
             //New invitation created.
 
-            profiles[i].waiting.push(invitation);
+            userProfile.waiting.push(invitation);
             let updatedProfilesData = JSON.stringify(profiles, null, 2);
             fs.writeFileSync("../data/profiles.json", updatedProfilesData);
             //Update database.
             
             response.send("Invitation successfully send !");
-            break;
-        } 
-        i++;
+        }
+        response.status(200);
     }
-    if (i===lenProfiles){
-        response.send("No username found.");s
+    else{
+        response.send("No account found.")
+        response.status(500);
+        return;
     }
-    response.status(200);
+    
 })
 
 module.exports = router;
 
+/*body request:
+{
+    "userId":"...",
+    "groupId":"..."
+}
+*/
