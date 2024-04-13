@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const fs = require('fs');
+const {readFile} = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
-	let profilesData = fs.readFileSync("../data/profiles.json", {encoding: 'utf8', flag: 'r'});
-    let profiles = JSON.parse(profilesData);
+	let profiles = readFile("../data/profiles.json");
     //Array of every profile.
 
 	var lenUserList = profiles.length;
@@ -13,11 +12,11 @@ router.post("/",async (request,response,_next)=>{
 		if (profiles[i].username === request.body.username && profiles[i].password ===  request.body.password){
 			//Tcheck if a password and an username matched in the database.
 
-			response.send(`Connected as ${profiles[i].username}.`);
 			let currentUserId = profiles[i].userId;
 			module.exports = currentUserId;
 			//It permits to other files to know which user is connected.
 
+			response.send(`Connected as ${profiles[i].username}.`);
 			break;
 		}
 		i++;

@@ -8,6 +8,41 @@
       3,
       4,
       5
+    ],
+    "list": [
+      {
+        "name": "Food",
+        "elements": []
+      },
+      {
+        "name": "Furniture",
+        "elements": []
+      },
+      {
+        "name": "Movies",
+        "elements": [
+          "OSS 117",
+          "The lord of rings"
+        ]
+      }
+    ],
+    "polls":[
+      {
+        "movie":"OSS 117",
+        "nbVote":1,
+        "votersId":[
+          1
+        ]
+      },
+      {
+        "movie":"The lord of rings",
+        "nbVote":3,
+        "votersId":[
+          2,
+          4,
+          5
+        ]
+      }
     ]
   },
   {
@@ -16,48 +51,35 @@
     "membersId": [
       2,
       3
-    ]
+    ],
+    "list": [],
+    "polls":[]
   },
   {
     "groupId": 3,
     "name": "test",
     "membersId": [
       1
-    ]
-  },
-  {
-    "groupId": 3,
-    "name": "test",
-    "membersId": [
-      1
-    ]
+    ],
+    "list": [],
+    "polls":[]
   },
   {
     "groupId": 4,
     "name": "nearlydead",
     "membersId": [
       1
-    ]
-  },
-  {
-    "groupId": 4,
-    "name": "nearlydead",
-    "membersId": [
-      1
-    ]
+    ],
+    "list": [],
+    "polls":[]
   },
   {
     "groupId": 5,
     "name": "oeoeoe",
     "membersId": [
       1
-    ]
-  },
-  {
-    "groupId": 5,
-    "name": "oeoeoe",
-    "membersId": [
-      1
-    ]
+    ],
+    "list": [],
+    "polls":[]
   }
 ]

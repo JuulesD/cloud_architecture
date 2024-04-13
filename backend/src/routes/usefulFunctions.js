@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 function getUserIndexFromId(id,profiles){
     for (l=0;l!=profiles.length;l++)
         if (profiles[l].userId === id)
@@ -19,4 +21,14 @@ function getWaitingGroupIndexFromId(id,waiting){
     return -1;
 }
 
-module.exports = {getUserIndexFromId, getGroupIndexFromId, getWaitingGroupIndexFromId};
+function readFile(path){
+    let data = fs.readFileSync(path, { encoding: 'utf8', flag: 'r' });
+    return JSON.parse(data);
+}
+
+function writeFile(path,data){
+    let updatedData = JSON.stringify(data, null, 2);
+    fs.writeFileSync(path,updatedData);
+}
+
+module.exports = {getUserIndexFromId, getGroupIndexFromId, getWaitingGroupIndexFromId, readFile, writeFile};

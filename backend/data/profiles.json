@@ -9,19 +9,23 @@
     "groups": [
       {
         "groupId": 1,
-        "status": "admin"
+        "status": "admin",
+        "vote":0
       },
       {
         "groupId": 3,
-        "status": "admin"
+        "status": "admin",
+        "vote":1
       },
       {
         "groupId": 4,
-        "status": "admin"
+        "status": "admin",
+        "vote":1
       },
       {
         "groupId": 5,
-        "status": "admin"
+        "status": "admin",
+        "vote":1
       }
     ],
     "waiting": []
@@ -36,11 +40,13 @@
     "groups": [
       {
         "groupId": 1,
-        "status": "member"
+        "status": "member",
+        "vote":0
       },
       {
         "groupId": 2,
-        "status": "admin"
+        "status": "admin",
+        "vote":1
       }
     ],
     "waiting": [
@@ -60,11 +66,13 @@
     "groups": [
       {
         "groupId": 1,
-        "status": "member"
+        "status": "member",
+        "vote":1
       },
       {
         "groupId": 2,
-        "status": "member"
+        "status": "member",
+        "vote":1
       }
     ],
     "waiting": [
@@ -84,7 +92,8 @@
     "groups": [
       {
         "groupId": 1,
-        "status": "member"
+        "status": "member",
+        "vote":0
       }
     ],
     "waiting": []
@@ -99,7 +108,8 @@
     "groups": [
       {
         "groupId": 1,
-        "status": "member"
+        "status": "member",
+        "vote":0
       }
     ],
     "waiting": []

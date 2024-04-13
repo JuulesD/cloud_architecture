@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const fs = require('fs');
-const {getGroupIndexFromId, getUserIndexFromId, getWaitingGroupIndexFromId} = require("../usefulFunctions");
+const {getGroupIndexFromId, getUserIndexFromId, getWaitingGroupIndexFromId, readFile, writeFile} = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
     let currentUserId = require("../account/connect");
     //Connected user.
 
-    let profilesData = fs.readFileSync("../data/profiles.json", { encoding: 'utf8', flag: 'r' });
-    let profiles = JSON.parse(profilesData);
+    let profiles = readFile("../data/profiles.json");
     //Array of every profile.
 
     let userIndex = getUserIndexFromId(currentUserId,profiles);
@@ -18,8 +16,7 @@ router.post("/",async (request,response,_next)=>{
         let userProfile = profiles[userIndex];
         //Current user.
 
-        let groupsData = fs.readFileSync("../data/groups.json", { encoding: 'utf8', flag: 'r' });
-        let groups = JSON.parse(groupsData);
+        let groups = readFile("../data/groups.json");
         //Array of every profile.
 
         if (request.body.accept === "yes"){
@@ -40,8 +37,7 @@ router.post("/",async (request,response,_next)=>{
             userProfile.waiting.splice(waitingIndex,1);
             //Group delete from the waiting list.
 
-            let updatedGroupsData = JSON.stringify(groups, null, 2);
-            fs.writeFileSync("../data/groups.json",updatedGroupsData);
+            writeFile("../data/groups.json",groups);
             //Json groups file update.
 
             response.send("Group joined !")
@@ -54,8 +50,7 @@ router.post("/",async (request,response,_next)=>{
             response.send("Invitation declined.")
         }
 
-        let updatedProfilesData = JSON.stringify(profiles, null, 2);
-        fs.writeFileSync("../data/profiles.json",updatedProfilesData);
+        writeFile("../data/profiles.json",profiles);
         //Json user file update.
 
         response.status(200);
@@ -75,5 +70,3 @@ module.exports = router;
     "accept":"..."
 }
 */
-
-//Boucle infinie

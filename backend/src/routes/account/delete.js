@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const fs = require('fs');
-const { getUserIndexFromId, getGroupIndexFromId } = require("../usefulFunctions");
+const { getUserIndexFromId, getGroupIndexFromId, readFile, writeFile } = require("../usefulFunctions");
 
 function removeUser(profiles,groups,idIndex,currentUserId){
 
@@ -55,13 +54,11 @@ function removeUser(profiles,groups,idIndex,currentUserId){
             modifiedGroups.push(groups[i]);
         }
     }
-    let updatedGroupsData = JSON.stringify(modifiedGroups, null, 2);
-    fs.writeFileSync("../data/groups.json",updatedGroupsData);
+    writeFile("../data/groups.json",modifiedGroups);
     //Json groups file update.
 
     profiles.splice(idIndex, 1);
-    let updatedProfilesData = JSON.stringify(profiles, null, 2);
-    fs.writeFileSync("../data/profiles.json",updatedProfilesData);
+    writeFile("../data/profiles.json",profiles);
     //User is deleted and the json profiles file update.
 }
 
@@ -69,16 +66,14 @@ router.post("/",async (_request,response,_next)=>{
     let currentUserId = require("./connect");
     //Connected user.
 
-    let profilesData = fs.readFileSync("../data/profiles.json", { encoding: 'utf8', flag: 'r' });
-    let profiles = JSON.parse(profilesData);
+    let profiles = readFile("../data/profiles.json");
     //Array of every profile.
 
     let idIndex = getUserIndexFromId(currentUserId,profiles);
     //Profile of the connected user.
 
     if (idIndex != -1){
-        let groupsData = fs.readFileSync("../data/groups.json", { encoding: 'utf8', flag: 'r' });
-        let groups = JSON.parse(groupsData);
+        let groups = readFile("../data/groups.json");
         //Array of every group.
 
         removeUser(profiles,groups ,idIndex,currentUserId);

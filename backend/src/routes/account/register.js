@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const fs = require('fs');
+const {readFile, writeFile} = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
-    let profilesData = fs.readFileSync("../data/profiles.json", {encoding: 'utf8', flag: 'r'});
-	let profiles = JSON.parse(data);
+    let profiles = readFile("../data/profiles.json");
 	//Array of every profile.
 		
 	let lenUserList = profiles.length;
@@ -32,8 +31,7 @@ router.post("/",async (request,response,_next)=>{
         profiles.push(newProfile);
 		//Creation and update of the new profile.
 
-        let updatedData = JSON.stringify(profiles, null, 2);
-        fs.writeFileSync("../data/profiles.json", updatedData);
+        writeFile("../data/profiles.json",profiles);
         response.send("New account created.")
 		//Update data.
     }

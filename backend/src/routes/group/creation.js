@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const fs = require('fs');
-const {getUserIndexFromId} = require("../usefulFunctions");
+const {getUserIndexFromId, readFile, writeFile} = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
     let currentUserId = require("../account/connect");
     //Connected user.
  
-    let profilesData = fs.readFileSync("../data/profiles.json", {encoding: 'utf8', flag: 'r'});
-    let profiles = JSON.parse(profilesData);
+    let profiles = readfile("../data/profiles.json");
     //Array of every profile.
     
     let userIndex = getUserIndexFromId(currentUserId,profiles);
@@ -16,34 +14,34 @@ router.post("/",async (request,response,_next)=>{
     if (userIndex != -1){
         //Test if user is connected.
 
-        let dataGroup = fs.readFileSync("../data/groups.json", {encoding: 'utf8', flag: 'r'});
-        let groups = JSON.parse(dataGroup);
+        let groups = readFile("../data/groups.json");
         //Array of every group.
     
         let lenGroupList = groups.length;
         let group = {
             "groupId" : lenGroupList>0 ? groups[lenGroupList-1].groupId + 1 : 1,
-            "status" : "admin"
+            "status" : "admin",
+            "vote":1
         };
         //New user information.
     
         profiles[userIndex].groups.push(group);
         //Group added to the profile.
     
-        let updatedProfilesData = JSON.stringify(profiles, null, 2);
-        fs.writeFileSync("../data/profiles.json", updatedProfilesData);
+        writeFile("../data/profiles.json",profiles);
         //Data update in database.
     
         let newGroup = {
             "groupId" : lenGroupList>0 ? groups[lenGroupList-1].groupId + 1 : 1,
             "name" : request.body.name,
-            "membersId" : [currentUserId]
+            "membersId" : [currentUserId],
+            "list":[],
+            "polls":[]
         };
         //New group informations.
     
         groups.push(newGroup);
-        let updatedGroupData = JSON.stringify(groups, null, 2);
-        fs.writeFileSync("../data/groups.json", updatedGroupData);
+        writeFile("../data/groups.json",groups);
         //Data update.
     
         response.send("New Group added to your profile.")

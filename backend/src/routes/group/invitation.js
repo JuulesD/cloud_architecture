@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const fs = require('fs');
-const {getUserIndexFromId} = require("../usefulFunctions");
+const {getUserIndexFromId, readFile, writeFile} = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
     let currentUserId = require("../account/connect");
     //Connected user.
  
-    let profilesData = fs.readFileSync("../data/profiles.json", {encoding: 'utf8', flag: 'r'});
-    let profiles = JSON.parse(profilesData);
+    let profiles = readFile("../data/profiles.json");
     //Array of every profile.
     
     let senderIndex = getUserIndexFromId(currentUserId,profiles);
@@ -45,8 +43,8 @@ router.post("/",async (request,response,_next)=>{
             //New invitation created.
 
             userProfile.waiting.push(invitation);
-            let updatedProfilesData = JSON.stringify(profiles, null, 2);
-            fs.writeFileSync("../data/profiles.json", updatedProfilesData);
+
+            writeFile("../data/profiles.json",profiles);
             //Update database.
             
             response.send("Invitation successfully send !");
