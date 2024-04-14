@@ -9,21 +9,6 @@
     "groups": [
       {
         "groupId": 1,
-        "status": "member",
-        "vote": 0
-      },
-      {
-        "groupId": 3,
-        "status": "admin",
-        "vote": 1
-      },
-      {
-        "groupId": 4,
-        "status": "admin",
-        "vote": 1
-      },
-      {
-        "groupId": 5,
         "status": "admin",
         "vote": 1
       }
@@ -41,7 +26,7 @@
       {
         "groupId": 1,
         "status": "member",
-        "vote": 0
+        "vote": 1
       },
       {
         "groupId": 2,
@@ -49,12 +34,7 @@
         "vote": 1
       }
     ],
-    "waiting": [
-      {
-        "senderId": 6,
-        "groupId": 5
-      }
-    ]
+    "waiting": []
   },
   {
     "userId": 3,
@@ -66,50 +46,13 @@
     "groups": [
       {
         "groupId": 1,
-        "status": "admin",
-        "vote": 0
+        "status": "member",
+        "vote": 1
       },
       {
         "groupId": 2,
         "status": "member",
         "vote": 1
-      }
-    ],
-    "waiting": [
-      {
-        "senderId": 1,
-        "groupId": 3
-      }
-    ]
-  },
-  {
-    "userId": 4,
-    "username": "british",
-    "firstname": "Josepf",
-    "surname": "Bloomer",
-    "profilePic": "joseph_bloomer.jpg",
-    "password": "jopsw",
-    "groups": [
-      {
-        "groupId": 1,
-        "status": "member",
-        "vote": 0
-      }
-    ],
-    "waiting": []
-  },
-  {
-    "userId": 5,
-    "username": "Giu",
-    "firstname": "Giulia",
-    "surname": "idk",
-    "profilePic": "giulia_idk.jpg",
-    "password": "gupsw",
-    "groups": [
-      {
-        "groupId": 1,
-        "status": "member",
-        "vote": 0
       }
     ],
     "waiting": []

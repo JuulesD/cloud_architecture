@@ -5,9 +5,7 @@
     "membersId": [
       1,
       2,
-      3,
-      4,
-      5
+      3
     ],
     "list": [
       {
@@ -29,20 +27,13 @@
     "polls": [
       {
         "movie": "OSS 117",
-        "nbVote": 2,
-        "votersId": [
-          1,
-          3
-        ]
+        "nbVote": 0,
+        "votersId": []
       },
       {
         "movie": "The lord of rings",
-        "nbVote": 3,
-        "votersId": [
-          2,
-          4,
-          5
-        ]
+        "nbVote": 0,
+        "votersId": []
       }
     ]
   },
@@ -52,33 +43,6 @@
     "membersId": [
       2,
       3
-    ],
-    "list": [],
-    "polls": []
-  },
-  {
-    "groupId": 3,
-    "name": "test",
-    "membersId": [
-      1
-    ],
-    "list": [],
-    "polls": []
-  },
-  {
-    "groupId": 4,
-    "name": "nearlydead",
-    "membersId": [
-      1
-    ],
-    "list": [],
-    "polls": []
-  },
-  {
-    "groupId": 5,
-    "name": "oeoeoe",
-    "membersId": [
-      1
     ],
     "list": [],
     "polls": []
