@@ -44,6 +44,7 @@ module.exports = router;
 {
     "username":"...",
     "firstname":"...",
+	"surname":"...",
 	"profilePic":"...",
 	"password":"..."
 }
