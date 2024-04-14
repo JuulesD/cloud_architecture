@@ -39,3 +39,12 @@ router.post("/",async (request,response,_next)=>{
 });
 
 module.exports = router;
+
+/*body request:
+{
+    "username":"...",
+    "firstname":"...",
+	"profilePic":"...",
+	"password":"..."
+}
+*/

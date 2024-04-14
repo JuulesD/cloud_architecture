@@ -14,16 +14,7 @@ app.use("/deleteFromList",require("./routes/group/deleteFromList.js"));
 app.use("/deleteElementFromList",require("./routes/group/deleteElementFromList.js"));
 app.use("/addPoll",require("./routes/group/addPoll.js"));
 app.use("/vote",require("./routes/group/vote.js"));
-/*
-IMPORTANT
-app.use("/chat",require("./routes/chat.js")); long
-
-OSEF
-app.use("/deletion",require("./routes/group/deletion.js"));  osef
 app.use("/leave",require("./routes/group/leave.js"));
 app.use("/changeStatus",require("./routes/group/changeStatus.js"));
-app.use("/kick",require("./routes/group/kick.js"));
-app.use("/ban",require("./routes/group/ban.js")); long
-app.use("/unban",require("./routes/group/unban.js"));
-*/
+
 app.listen(process.env.PORT || 3000);

@@ -20,7 +20,7 @@ function removeUser(profiles,groups,idIndex,currentUserId){
                 //Tcheck if the user is in the group.
 
                 for (k=0;k!=userProfile.groups.length;k++){
-                //Search user status, it needs to be change if the user
+                //Search user status, it needs to be change if the user is the admin.
 
                     if (userProfile.groups[k].groupId === groups[i].groupId && userProfile.groups[k].status === "admin"){
                         //Tcheck if the group is good and if user is the admin.
@@ -42,6 +42,17 @@ function removeUser(profiles,groups,idIndex,currentUserId){
                         break;
                     }
                 }
+                
+                for (k=0;k=!groups[i].polls.length;i++){
+                    for (q=0; q!=groups[i].polls[k].votersId.length;q++){
+                        if (q!=groups[i].polls[k].votersId[q] === currentUserId){
+                            groups[i].polls[k].nbVote -=1;
+                            groups[i].polls[k].votersId.splice(q,1);
+                            break;
+                        }
+                    }
+                }
+                
                 modifiedGroups.push(groups[i]);
                 modifiedGroups[modifiedGroups.length-1].membersId.splice(j,1);
                 //Adding the new object to the new list.
@@ -89,4 +100,7 @@ router.post("/",async (_request,response,_next)=>{
 
 module.exports = router;
 
-//Si un groupe est supprimé du même temps, supprimer tous les waitings
+/*body request:
+{
+}
+*/
