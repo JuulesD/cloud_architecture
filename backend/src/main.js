@@ -13,10 +13,10 @@ app.use("/addToList",require("./routes/group/addToList.js"));
 app.use("/deleteFromList",require("./routes/group/deleteFromList.js"));
 app.use("/deleteElementFromList",require("./routes/group/deleteElementFromList.js"));
 app.use("/addPoll",require("./routes/group/addPoll.js"));
-app.use("/addPoll",require("./routes/group/vote.js"));
+app.use("/vote",require("./routes/group/vote.js"));
 /*
 IMPORTANT
-app.use("/chat",require("./routes/chat.js"));
+app.use("/chat",require("./routes/chat.js")); long
 
 OSEF
 app.use("/deletion",require("./routes/group/deletion.js"));  osef

@@ -10,22 +10,22 @@
       {
         "groupId": 1,
         "status": "admin",
-        "vote":0
+        "vote": 0
       },
       {
         "groupId": 3,
         "status": "admin",
-        "vote":1
+        "vote": 1
       },
       {
         "groupId": 4,
         "status": "admin",
-        "vote":1
+        "vote": 1
       },
       {
         "groupId": 5,
         "status": "admin",
-        "vote":1
+        "vote": 1
       }
     ],
     "waiting": []
@@ -41,12 +41,12 @@
       {
         "groupId": 1,
         "status": "member",
-        "vote":0
+        "vote": 0
       },
       {
         "groupId": 2,
         "status": "admin",
-        "vote":1
+        "vote": 1
       }
     ],
     "waiting": [
@@ -67,12 +67,12 @@
       {
         "groupId": 1,
         "status": "member",
-        "vote":1
+        "vote": 0
       },
       {
         "groupId": 2,
         "status": "member",
-        "vote":1
+        "vote": 1
       }
     ],
     "waiting": [
@@ -93,7 +93,7 @@
       {
         "groupId": 1,
         "status": "member",
-        "vote":0
+        "vote": 0
       }
     ],
     "waiting": []
@@ -109,7 +109,7 @@
       {
         "groupId": 1,
         "status": "member",
-        "vote":0
+        "vote": 0
       }
     ],
     "waiting": []

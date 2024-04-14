@@ -1,5 +1,24 @@
 const fs = require('fs');
 
+async function linkApi(){
+	const options = {
+		method: 'GET',
+		headers: {
+			'X-RapidAPI-Key': '71c89b1928msh4dd545334e32284p1605b3jsnaf0b4e3cc8f7',
+			'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+		}
+	};
+
+	try{
+		const response = await fetch('https://imdb-top-100-movies.p.rapidapi.com/top32', options);
+		const result = await response.text();
+		console.log(result);
+	}
+	catch (error){
+		console.error(error);
+	}
+}
+
 function getUserIndexFromId(id,profiles){
     for (l=0;l!=profiles.length;l++)
         if (profiles[l].userId === id)
@@ -31,4 +50,4 @@ function writeFile(path,data){
     fs.writeFileSync(path,updatedData);
 }
 
-module.exports = {getUserIndexFromId, getGroupIndexFromId, getWaitingGroupIndexFromId, readFile, writeFile};
+module.exports = {getUserIndexFromId, getGroupIndexFromId, getWaitingGroupIndexFromId, readFile, writeFile, linkApi};

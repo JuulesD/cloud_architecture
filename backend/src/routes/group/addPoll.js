@@ -3,8 +3,6 @@ const router = express.Router();
 const {getUserIndexFromId, getGroupIndexFromId, readFile, writeFile} = require("../usefulFunctions");
 
 function addPoll(groups, request){
-    let groups = readFile("../data/groups.json");
-    //Array of every group.
 
     let groupIndex = getGroupIndexFromId(request.body.groupId,groups);
 
@@ -38,6 +36,9 @@ router.post("/",async (request,response,_next)=>{
             response.status(200);
         }
         else{
+            let groups = readFile("../data/groups.json");
+            //Array of every group.
+            
             addPoll(groups, request);
             response.send("Group vote added.")
             response.status(200);

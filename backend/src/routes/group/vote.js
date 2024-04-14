@@ -2,51 +2,59 @@ const express = require("express");
 const router = express.Router();
 const {getUserIndexFromId, getGroupIndexFromId, readFile, writeFile} = require("../usefulFunctions");
 
-function validVote(groups, groupIndex, userProfile, request){
-    for (i=0;i!=groups[groupIndex].poll.length;i++){
-        if (groups[groupIndex].poll[i].name === request.body.name){
-            groups[groupIndex].poll[i].vote +=1;
-            groups[groupIndex].poll[i].votersId.push(userProfile.userId);
+function validVote(groups, profiles, group, groupIndexInProfile, userProfile, request){
+    for (i=0;i!=group.polls.length;i++){
+        let poll = group.polls[i];
+        //Current poll checked.
+
+        if (poll.movie === request.body.name){
+            poll.nbVote +=1;
+            //Vote for the movie is augmented.
+
+            poll.votersId.push(userProfile.userId);
+            //Member that voted for the movie is added.
+
             userProfile.groups[groupIndexInProfile].vote = 0;
+            //User already used his vote.
+
+            writeFile("../data/groups.json",groups)
+            writeFile("../data/profiles.json",profiles)
+            //Files are updated.
             return 0;
         }
     }
     return -1;
 }
 
-function vote(userProfile, groups, request){
+function vote(userProfile, profiles, groups, request){
     let groupIndexInProfile = getGroupIndexFromId(request.body.groupId,userProfile.groups);
     //Index of the group in the user group list.
 
     let groupIndex = getGroupIndexFromId(request.body.groupId,groups);
     //Index of the group in the user group database.
 
+    let group = groups[groupIndex];
+
     if (userProfile.groups[groupIndexInProfile].vote == 1){
         //Tcheck if the user has already used his vote.
         
-        let done = validVote(groups, groupIndex, userProfile, request);
-        if (done === -1)
-            return -1;
-        else{
-            writeFile("../data/groups.json",groups)
-            return 0;
-        }
-
+        return validVote(groups, profiles, group, groupIndexInProfile, userProfile, request);
     }
     else{
         //If he has already vote, the number of vote for the movie need to be decreased.
-        for (i=0;i!=groups[groupIndex].poll.length;i++)
-            for (j=0;j!=groups[groupIndex].poll[i].votersId.length;j++)
-                if (groups[groupIndex].poll[i].votersId[j] === userProfile.userId){
-                    groups[groupIndex].poll[i].votersId.splice(j,1);
-                    let done = validVote(groups, groupIndex, userProfile, request);
-                    if (done === -1)
-                        return -1;
-                    else{
-                        writeFile("../data/groups.json",groups)
-                        return 0;
-                    }
+        for (i=0;i!=group.polls.length;i++){
+            let poll = group.polls[i];
+
+            for (j=0;j!=poll.votersId.length;j++)
+                if (poll.votersId[j] === userProfile.userId){
+                    poll.nbVote -=1;
+
+                    poll.votersId.splice(j,1);
+                    //Member of the poll deleted.
+
+                    return validVote(group, profiles, group, groupIndexInProfile, userProfile, request);
                 }
+        }
     }
 }
 
@@ -61,10 +69,10 @@ router.post("/",async (request,response,_next)=>{
     if (idIndex !=-1){
         let userProfile = profiles[idIndex];
 
-        let groups = readfile("../data/groups.json");
+        let groups = readFile("../data/groups.json");
         //Array of every group.
-
-        let done = vote(userProfile, groups, request);
+        
+        let done = vote(userProfile, profiles, groups, request);
         if (done === -1)
             response.send("Poll not existed.")
         else

@@ -3,8 +3,6 @@ const router = express.Router();
 const {getUserIndexFromId, getGroupIndexFromId, readFile, writeFile} = require("../usefulFunctions");
 
 function addToList(groups, request){
-    let groups = readFile("../data/groups.json");
-    //Array of every group.
 
     let groupIndex = getGroupIndexFromId(request.body.groupId,groups);
 
@@ -26,6 +24,9 @@ router.post("/",async (request,response,_next)=>{
 
     let profiles = readFile("../data/profiles.json");
     //Array of every profile.
+    
+    let groups = readFile("../data/groups.json");
+    //Array of every group.
 
     let idIndex = getUserIndexFromId(currentUserId,profiles);
     if (idIndex !=-1){

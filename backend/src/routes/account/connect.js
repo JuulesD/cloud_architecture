@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {readFile} = require("../usefulFunctions");
+const {readFile, linkApi} = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
 	let profiles = readFile("../data/profiles.json");
@@ -14,6 +14,7 @@ router.post("/",async (request,response,_next)=>{
 
 			let currentUserId = profiles[i].userId;
 			module.exports = currentUserId;
+			linkApi();
 			//It permits to other files to know which user is connected.
 
 			response.send(`Connected as ${profiles[i].username}.`);
@@ -27,3 +28,10 @@ router.post("/",async (request,response,_next)=>{
 });
 
 module.exports = router;
+
+/*body request:
+{
+	"username":"...",
+	"password":"..."
+}
+*/
