@@ -19,7 +19,7 @@ router.post("/",async (request,response,_next)=>{
 	}
 	if (i==lenUserList){
 		const newProfile = {
-			"userId": lenUserList>0 ? profiles[i-1].id+1 : 1,
+			"userId": lenUserList>0 ? profiles[i-1].userId+1 : 1,
 			"username": request.body.username,
 			"firstname": request.body.firstname,
 			"surname": request.body.surname,
