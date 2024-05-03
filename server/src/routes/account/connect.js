@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {readFile, linkApi} = require("../usefulFunctions");
 
-var currentUserId;
+var currentUserId = -1;
 
 router.post("/",async (request,response,_next)=>{
 	let profiles = readFile("../data/profiles.json");
@@ -15,8 +15,9 @@ router.post("/",async (request,response,_next)=>{
 			//Tcheck if a password and an username matched in the database.
 
 			currentUserId = profiles[i].userId;
-			await linkApi();
 			//It permits to other files to know which user is connected.
+
+			//await linkApi();
 
 			const data = {
 				"message":`Connected as ${profiles[i].username}.`,
@@ -28,23 +29,31 @@ router.post("/",async (request,response,_next)=>{
 		}
 		i++;
 	}
-	console.log("i at the backend end :",i);
+	
 	if (i==lenUserList){
 		const data = {
 			"message":"Username and password doesn't match.",
-			"userId":-1
+			"userId":currentUserId
 		}
 		response.json(data);
 	}
 	response.status(200);
 });
 
-module.exports =  currentUserId ;
-module.exports = router;
+module.exports = () => ({ currentUserId, router });
+//The module is export via a function to prevent currentUserId to be equal to -1.
+//Only one module.exports can exist by file and as the router is an asynchronous function
+//it is necessary to export it via a function
 
 /*body request:
 {
 	"username":"...",
 	"password":"..."
+}
+*/
+/*body response:
+{
+	"message":"...",
+	"userId":"..."
 }
 */

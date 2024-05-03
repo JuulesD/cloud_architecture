@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 var currentUserId = -1;
 
@@ -30,6 +31,9 @@ function Connect(){
     };
 
     return (<>
+        <Link to="/" className="title">
+            <img src="../../data/popcorn.ico" alt="error_loading_logo" /> CineGather
+        </Link>
         <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username:</label>
             <input id="username" type="text" value={username} onChange={(event) => setUsername(event.target.value)}/>

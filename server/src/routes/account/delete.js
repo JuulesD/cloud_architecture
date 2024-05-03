@@ -74,7 +74,7 @@ function removeUser(profiles,groups,idIndex,currentUserId){
 }
 
 router.post("/",async (_request,response,_next)=>{
-    let currentUserId = require("./connect");
+    let currentUserId = require("./connect")();
     //Connected user.
 
     let profiles = readFile("../data/profiles.json");

@@ -14,7 +14,7 @@ function removePart(groups, request){
 }
 
 router.post("/",async (request,response,_next)=>{
-    let currentUserId = require("./connect");
+    let currentUserId = require("./connect")();
     //Connected user.
 
     let profiles = readFile("../data/profiles.json");

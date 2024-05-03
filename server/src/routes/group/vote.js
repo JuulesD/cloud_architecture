@@ -59,7 +59,7 @@ function vote(userProfile, profiles, groups, request){
 }
 
 router.post("/",async (request,response,_next)=>{
-    let currentUserId = require("../account/connect");
+    let currentUserId = require("../account/connect")();
     //Connected user.
 
     let profiles = readFile("../data/profiles.json");

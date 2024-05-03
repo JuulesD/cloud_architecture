@@ -1,8 +1,15 @@
-import React from 'react';
+import { React, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from "axios";
+
+var currentUserId;
 
 function CreateGroup(){
+
+    const searchParams = new URLSearchParams(useLocation().search);
+    currentUserId = searchParams.get('userId');
+
     const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -15,12 +22,8 @@ function CreateGroup(){
             const response = await axios.post('http://localhost:3000/creation', formData);
             setName("");
             if (response.data === "New Group added to your profile."){
-                window.location.href = '/';
+                window.location.href = `/?userId=${currentUserId}`;
             }
-            else{
-                
-            }
-
         } catch (error) {
             console.error('Error sending data :', error);
         }
@@ -31,7 +34,7 @@ function CreateGroup(){
             <label htmlFor="name">Name:</label>
             <input id="name" type="text" value={name} onChange={(event) => setName(event.target.value)}/>
 
-            <button type="submit">Connect</button>
+            <button type="submit">Create</button>
         </form>
     </>)
 }
