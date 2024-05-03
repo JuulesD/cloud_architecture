@@ -75,4 +75,12 @@ function verifPassword(input){
     return true;
 }
 
-module.exports = {getUserIndexFromId, getGroupIndexFromId, getWaitingGroupIndexFromId, readFile, writeFile, linkApi, verifInput, verifPassword};
+function getUserIndexFromUsername(username,profiles){
+    for (l=0;l!=profiles.length;l++)
+        if (profiles[l].username === username)
+            return l;
+    return -1;
+}
+
+module.exports = { getUserIndexFromId, getGroupIndexFromId, getWaitingGroupIndexFromId,
+                   readFile, writeFile, linkApi, verifInput, verifPassword, getUserIndexFromUsername };

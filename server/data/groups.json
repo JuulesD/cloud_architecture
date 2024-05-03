@@ -46,5 +46,14 @@
     ],
     "list": [],
     "polls": []
+  },
+  {
+    "groupId": 3,
+    "name": "test",
+    "membersId": [
+      3
+    ],
+    "list": [],
+    "polls": []
   }
 ]

@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Register from '../profile/register';
 import Connect from "../profile/connect";
-import Body from "./body";
+import ChangeInfos from '../profile/changeInfos';
+
+import Body from "./bodyhome";
 import CreateGroup from '../groups/createGroup';
 import Group from '../groups/group';
-import ChangeInfos from '../profile/changeInfos';
 
 function Homepage(){
     return(<>

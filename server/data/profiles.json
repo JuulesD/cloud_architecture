@@ -13,7 +13,12 @@
         "vote": 1
       }
     ],
-    "waiting": []
+    "waiting": [
+      {
+        "userId": 3,
+        "groupId": 3
+      }
+    ]
   },
   {
     "userId": 2,
@@ -52,6 +57,11 @@
       {
         "groupId": 2,
         "status": "member",
+        "vote": 1
+      },
+      {
+        "groupId": 3,
+        "status": "admin",
         "vote": 1
       }
     ],

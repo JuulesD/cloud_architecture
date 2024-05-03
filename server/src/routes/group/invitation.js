@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const {getUserIndexFromId, readFile, writeFile} = require("../usefulFunctions");
+const { getUserIndexFromId, getUserIndexFromUsername, readFile, writeFile} = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
-    let currentUserId = require("../account/connect")();
+    let { currentUserId } = require("../account/connect")();
     //Connected user.
  
     let profiles = readFile("../data/profiles.json");
@@ -11,9 +11,10 @@ router.post("/",async (request,response,_next)=>{
     
     let senderIndex = getUserIndexFromId(currentUserId,profiles);
     //Current user.
+
     if (senderIndex != -1){
 
-        let receiverIndex = getUserIndexFromId(request.body.userId,profiles);
+        let receiverIndex = getUserIndexFromUsername(request.body.username,profiles);
 
         if (receiverIndex===-1){
             response.send("No username found.");
@@ -63,7 +64,7 @@ module.exports = router;
 
 /*body request:
 {
-    "userId":"...",
+    "username":"...",
     "groupId":"..."
 }
 */
