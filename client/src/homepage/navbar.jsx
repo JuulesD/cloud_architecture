@@ -63,7 +63,7 @@ function Navbar(){
     return(
         <header>
             <nav>
-                <Link to={`/?userId=${currentUserId}`} className="profileInfos">
+                <Link to={`changeInfos/?userId=${currentUserId}`} className="profileInfos">
                     <div>
                         <img src="./data/profile.jpg" alt="error_loading_profile_image" /> Profile informations
                     </div>

@@ -3,10 +3,7 @@ const router = express.Router();
 const {getUserIndexFromId, getGroupIndexFromId, readFile, writeFile} = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
-    let expVar = require("../account/connect")();
-    //Exported variables.
-
-    let currentUserId = expVar.currentUserId;
+    let { currentUserId } = require("../account/connect")();
     //Connected user.
 
     let profiles = readFile("../data/profiles.json");

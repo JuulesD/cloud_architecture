@@ -50,4 +50,29 @@ function writeFile(path,data){
     fs.writeFileSync(path,updatedData);
 }
 
-module.exports = {getUserIndexFromId, getGroupIndexFromId, getWaitingGroupIndexFromId, readFile, writeFile, linkApi};
+function verifInput(input){
+    //An input cannot be more than 15 char, must be at least one char, cannot start or end with space.
+    if (input.length === 0 || input.length > 15)
+        return false;
+    const first = input[0];
+    if (first === " ")
+        return false;
+    else{
+        isSpace = false;
+        for (let i = 1;i!=input.length;i++){
+            if (input[i]===" ")
+                isSpace = true;
+            else
+                isSpace = false;
+        }
+    }
+    return !isSpace;
+}
+
+function verifPassword(input){
+    if (input.length < 8 || input.length > 32)
+        return false;
+    return true;
+}
+
+module.exports = {getUserIndexFromId, getGroupIndexFromId, getWaitingGroupIndexFromId, readFile, writeFile, linkApi, verifInput, verifPassword};
