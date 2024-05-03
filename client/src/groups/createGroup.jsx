@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from "axios";
 
 var currentUserId;
@@ -30,6 +30,9 @@ function CreateGroup(){
     };
 
     return (<>
+        <Link to={`/?userId=${currentUserId}`} className="title">
+            <img src="../../data/popcorn.ico" alt="error_loading_logo" /> CineGather
+        </Link>
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
             <input id="name" type="text" value={name} onChange={(event) => setName(event.target.value)}/>

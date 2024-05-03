@@ -3,9 +3,12 @@ const router = express.Router();
 const {getUserIndexFromId, getGroupIndexFromId, readFile, writeFile} = require("../usefulFunctions");
 
 router.post("/",async (request,response,_next)=>{
-    let currentUserId = require("../account/connect")();
+    let expVar = require("../account/connect")();
+    //Exported variables.
+
+    let currentUserId = expVar.currentUserId;
     //Connected user.
- 
+
     let profiles = readFile("../data/profiles.json");
     //Array of every profile.
     
@@ -20,7 +23,8 @@ router.post("/",async (request,response,_next)=>{
         //Group user needs to be removed from.
 
         let i = 0;
-        while (i!=groups[groupIndex].membersId.length){
+        let initLenMembers = groups[groupIndex].membersId.length;
+        while (i!=initLenMembers){
             if (groups[groupIndex].membersId[i] === currentUserId){
                 let userProfile = profiles[userIndex];
                 //Current user.
@@ -43,6 +47,10 @@ router.post("/",async (request,response,_next)=>{
                 groups[groupIndex].membersId.splice(i,1);
                 //User is removed from the groupList.
 
+                if (groups[groupIndex].membersId.length === 0)
+                    groups.splice(groupIndex,1);
+                //If the user was alone in the group, the group is removed.
+
                 userProfile.groups.splice(groupProfileIndex,1);
                 //Group is removed from user groupList.
 
@@ -50,7 +58,7 @@ router.post("/",async (request,response,_next)=>{
             }
             i+=1;
         }
-        if (i===groups[groupIndex].membersId.length){
+        if (i===initLenMembers){
             response.send("This user is not in the group.")
             response.status(500);
             return;
