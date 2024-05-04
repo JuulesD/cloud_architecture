@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const {getGroupIndexFromId, getUserIndexFromId, getWaitingGroupIndexFromId, readFile, writeFile} = require("../usefulFunctions");
 
-router.post("/",async (request,response,_next)=>{
-    let currentUserId = require("../account/connect")();
+router.put("/",async (request,response,_next)=>{
+    let { currentUserId } = require("../account/connect")();
     //Connected user.
 
     let profiles = readFile("../data/profiles.json");
@@ -19,7 +19,7 @@ router.post("/",async (request,response,_next)=>{
         let groups = readFile("../data/groups.json");
         //Array of every profile.
 
-        if (request.body.accept === "yes"){
+        if (request.body.accept){
             //Tcheck if the invitation has been accepted or not.
 
             let groupIndex = getGroupIndexFromId(request.body.groupId,groups);

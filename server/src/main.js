@@ -17,6 +17,8 @@ app.use("/changeInfos",require("./routes/account/changeInfos.js"));
 app.use("/getGroupInfos",require("./routes/group/getGroupInfos.js"));
 app.use("/getUserGroups",require("./routes/account/getUserGroups.js"));
 app.use("/getUserInfos",require("./routes/account/getUserInfos.js"));
+app.use("/getUserWaitingsInfos",require("./routes/account/getUserWaitingsInfos.js"));
+app.use("/getMembersName",require("./routes/group/getMembersName.js"));
 
 app.use("/creation",require("./routes/group/creation.js"));
 app.use("/invitation",require("./routes/group/invitation.js"));

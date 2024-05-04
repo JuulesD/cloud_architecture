@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from "axios";
 
 var currentUserId;
@@ -14,12 +14,7 @@ function ChangeInfos(){
     const [surname, setSurname] = useState("");
     const [profilePic, setProfilePic] = useState("");
     const [password, setPassword] = useState("");
-
-    const [isValidInformations, setValid] = useState("");
-
-    useEffect(() => {
-        setValid(true);
-    },[])
+    const [isValidInformations, setValid] = useState(false);
 
     useEffect(() => {
         const getUserInfos = async () => {
@@ -30,10 +25,13 @@ function ChangeInfos(){
                 setSurname(response.data.surname);
                 setProfilePic(response.data.profilePic);
                 setPassword(response.data.password);
+
             } catch (error) {
                 console.error('Error sending data :', error);
             }
         }
+        
+        setValid(true);
 
         getUserInfos();
 
@@ -51,7 +49,7 @@ function ChangeInfos(){
         };
 
         try {
-            const response = await axios.post('http://localhost:3000/changeInfos', formData);
+            const response = await axios.put('http://localhost:3000/changeInfos', formData);
             if (response.data)
                 window.location.href = `/?userId=${currentUserId}`;
             else
@@ -62,9 +60,6 @@ function ChangeInfos(){
     };
 
     return(<>
-        <Link to={`/?userId=${currentUserId}`} className="title">
-            <img src="../../data/popcorn.ico" alt="error_loading_logo" /> CineGather
-        </Link>
         <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username:</label>
             <input id="username" type="text" value={username} onChange={(event) => setUsername(event.target.value)}/>

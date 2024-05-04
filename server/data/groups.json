@@ -49,9 +49,28 @@
   },
   {
     "groupId": 3,
+    "name": "rft",
+    "membersId": [
+      3,
+      1
+    ],
+    "list": [],
+    "polls": []
+  },
+  {
+    "groupId": 4,
     "name": "test",
     "membersId": [
       3
+    ],
+    "list": [],
+    "polls": []
+  },
+  {
+    "groupId": 5,
+    "name": "ahahahaha",
+    "membersId": [
+      4
     ],
     "list": [],
     "polls": []

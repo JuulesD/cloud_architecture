@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Register from '../profile/register';
 import Connect from "../profile/connect";
-import ChangeInfos from '../profile/changeInfos';
+import ProfileInformations from '../profile/profileInformations';
 
 import Body from "./bodyhome";
 import CreateGroup from '../groups/createGroup';
@@ -18,7 +18,7 @@ function Homepage(){
             <Route path="/connect" element={<Connect/>} />
             <Route path='/createGroup' element={<CreateGroup/>} />
             <Route path='/group' element={<Group/>} />
-            <Route path='/changeInfos' element={<ChangeInfos/>} />
+            <Route path='/profileInformations' element={<ProfileInformations/>} />
         </Routes>
     </Router>
     

@@ -28,6 +28,7 @@ function Register(){
             setSurname("");
             setProfilePic("");
             setPassword("");
+            window.location.href = 'http://localhost:3001/'
         } catch (error) {
             console.error('Error sending data :', error);
         }

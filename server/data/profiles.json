@@ -2,23 +2,22 @@
   {
     "userId": 1,
     "username": "Julio",
-    "firstName": "Jules",
+    "firstname": "Jules",
     "surname": "Dubois",
     "profilePic": "jules_dubois.jpg",
     "password": "mypsw",
     "groups": [
       {
         "groupId": 1,
-        "status": "admin",
+        "status": "member",
         "vote": 1
+      },
+      {
+        "groupId": 3,
+        "status": "member"
       }
     ],
-    "waiting": [
-      {
-        "userId": 3,
-        "groupId": 3
-      }
-    ]
+    "waiting": []
   },
   {
     "userId": 2,
@@ -47,11 +46,11 @@
     "firstname": "Bor",
     "surname": "Sullin",
     "profilePic": "bor_sullin.jpg",
-    "password": "borpsw123",
+    "password": "borpsw",
     "groups": [
       {
         "groupId": 1,
-        "status": "member",
+        "status": "admin",
         "vote": 1
       },
       {
@@ -61,6 +60,11 @@
       },
       {
         "groupId": 3,
+        "status": "admin",
+        "vote": 1
+      },
+      {
+        "groupId": 4,
         "status": "admin",
         "vote": 1
       }

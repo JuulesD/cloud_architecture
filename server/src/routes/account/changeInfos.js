@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {getUserIndexFromId, readFile, writeFile, verifInput, verifPassword} = require("../usefulFunctions");
 
-router.post("/",async (request,response,_next)=>{
+router.put("/",async (request,response,_next)=>{
     let expVar = require("../account/connect")();
     //Exported variables.
 

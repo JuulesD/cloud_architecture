@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const {getUserIndexFromId, getGroupIndexFromId, readFile, writeFile} = require("../usefulFunctions");
+const {getUserIndexFromId, getGroupIndexFromId, readFile, writeFile, getUserIndexFromUsername} = require("../usefulFunctions");
 
-router.post("/",async (request,response,_next)=>{
-    let currentUserId = require("../account/connect")();
+router.put("/",async (request,response,_next)=>{
+    let {currentUserId} = require("../account/connect")();
     //Connected user.
  
     let profiles = readFile("../data/profiles.json");
@@ -26,7 +26,7 @@ router.post("/",async (request,response,_next)=>{
             //Tcheck if the status of the connected user in the reach group is admin, only an admin can change his status.
             profiles[userIndex].groups[oldAdminGroupIndex].status = "member";
 
-            let newAdminIndex = getUserIndexFromId(request.body.newAdminId,profiles);
+            let newAdminIndex = getUserIndexFromUsername(request.body.newAdminUsername,profiles);
             //New admin index in profiles.
             
             if (newAdminIndex === -1){
@@ -71,6 +71,6 @@ module.exports = router;
 /*body request:
 {
     "groupId":"...",
-    "newAdminId":"..."
+    "newAdminUsername":"..."
 }
 */

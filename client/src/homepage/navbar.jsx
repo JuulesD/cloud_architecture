@@ -63,7 +63,7 @@ function Navbar(){
     return(
         <header>
             <nav>
-                <Link to={`changeInfos/?userId=${currentUserId}`} className="profileInfos">
+                <Link to={`profileInformations/?userId=${currentUserId}`} className="profileInfos">
                     <div>
                         <img src="./data/profile.jpg" alt="error_loading_profile_image" /> Profile informations
                     </div>
@@ -77,7 +77,6 @@ function Navbar(){
                     ))}
                     <option key={0} value={0} onClick={handleCreateGroup}>New Group</option>
                     </select>
-                    <p>Selected group : {selectedOption}</p>
                 </div>
         </nav>
     </header>

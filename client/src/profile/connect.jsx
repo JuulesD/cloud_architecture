@@ -8,6 +8,7 @@ function Connect(){
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -24,6 +25,8 @@ function Connect(){
             if (response.data.message !== "Username and password doesn't match."){
                 currentUserId = response.data.userId;
                 window.location.href = `/?userId=${currentUserId}`;
+            } else {
+                setErrorMessage("Username and password doesn't match.");
             }
         } catch (error) {
             console.error('Error sending data :', error);
@@ -47,6 +50,7 @@ function Connect(){
 
             <button type="submit">Connect</button>
         </form>
+        {errorMessage && (<p>{errorMessage}</p>)}
     </>)    
 }
 

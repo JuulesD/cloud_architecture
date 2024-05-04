@@ -28,7 +28,7 @@ function Invite({ currentGroupId }){
         console.log(inviteInfos);
         try {
             const response = await axios.post('http://localhost:3000/invitation',inviteInfos);
-            console.log(response.data);
+            setSearchQuery('');
             setMessage(response.data);
         } catch (error) {
             console.error('Error reading data :', error);
@@ -42,7 +42,7 @@ function Invite({ currentGroupId }){
                 <div className="searchBox">
                 {/* Place your search input or other search components here */}
                 <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-                <button onClick={invite}>Search</button>
+                <button onClick={invite}>Invite</button>
                 </div>
             )}
         </div>

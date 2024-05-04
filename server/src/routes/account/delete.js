@@ -73,8 +73,8 @@ function removeUser(profiles,groups,idIndex,currentUserId){
     //User is deleted and the json profiles file update.
 }
 
-router.post("/",async (_request,response,_next)=>{
-    let currentUserId = require("./connect")();
+router.delete("/",async (_request,response,_next)=>{
+    let {currentUserId} = require("./connect")();
     //Connected user.
 
     let profiles = readFile("../data/profiles.json");
