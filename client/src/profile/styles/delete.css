@@ -1,0 +1,13 @@
+#delete-submit {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ef1212;
+    color: #fff;
+    cursor: pointer;
+}
+
+#delete-submit:hover {
+    background-color: #c21a1a;
+}

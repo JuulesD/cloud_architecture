@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-import './register.css';
+import '../styles/register.css';
 
 function Register(){
 
@@ -39,7 +39,7 @@ function Register(){
     return (
         <>
             <Link to="/" className="title">
-                <img src="../../data/popcorn.ico" alt="error_loading_logo" />
+                <img src="../../../data/popcorn.ico" alt="error_loading_logo" />
             </Link>
             <form id="register-form" onSubmit={handleSubmit}>
                 <div className="register-field">

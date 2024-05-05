@@ -1,4 +1,4 @@
-.first-header {
+#first-header {
     background-color: rgba(250, 187, 43);
     width: 100%;
     position: fixed;
@@ -7,14 +7,14 @@
     padding: 10px;
 }
 
-.first-header nav {
+#first-header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 150px;
 }
 
-.first-header nav a {
+#first-header nav a {
     text-decoration: none;
     color: black;
     margin-left: 10px;
@@ -25,8 +25,56 @@
     font-size: 18px;
 }
 
-.first-header nav img {
+#first-header nav img {
     width: 35px;
     height: auto;
     margin-right: 5px;
+}
+
+#second-header {
+    background-color: rgba(250, 187, 43);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    padding: 10px;
+}
+
+#second-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 150px;
+}
+
+.profileInfos {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.profileInfos img {
+    width: 50px;
+    height: auto;
+    margin-right: 5px;
+}
+
+#second-header-logo {
+    width: 50px;
+    height: auto;
+    margin-right: 5px;
+}
+
+#dropdown {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#dropdown option {
+    padding: 8px;
+    background-color: #fff;
+    color: #333;
 }

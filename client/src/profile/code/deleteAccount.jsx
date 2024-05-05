@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import '../styles/delete.css';
+
 function DeleteAccount(){
     
     const deleteAccount = async() => {
@@ -13,7 +15,7 @@ function DeleteAccount(){
     }
 
     return(<>
-        <button onClick={() => deleteAccount()}>Delete Account</button>
+        <button id="delete-submit" onClick={() => deleteAccount()}>Delete Account</button>
     </>)
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import './connect.css';
+import '../styles/connect.css';
 
 var currentUserId = -1;
 
@@ -38,7 +38,7 @@ function Connect(){
     return (
         <>
             <Link to="/" className="title">
-                <img src="../../data/popcorn.ico" alt="error_loading_logo" />
+                <img src="../../../data/popcorn.ico" alt="error_loading_logo" />
             </Link>
             <form id="connect-form" onSubmit={handleSubmit}>
                 <div className="connect-field">

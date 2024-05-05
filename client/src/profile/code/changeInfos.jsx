@@ -2,6 +2,8 @@ import { React, useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import axios from "axios";
 
+import '../styles/changeInfos.css';
+
 var currentUserId;
 
 function ChangeInfos(){
@@ -60,23 +62,34 @@ function ChangeInfos(){
     };
 
     return(<>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username:</label>
-            <input id="username" type="text" value={username} onChange={(event) => setUsername(event.target.value)}/>
+        <form id="changeInfos-form" onSubmit={handleSubmit}>
 
-            <label htmlFor="firstname">Firstname:</label>
-            <input id="firstname" type="text" value={firstname} onChange={(event) => setFirstname(event.target.value)}/>
+            <div className="register-field">
+                <label className="changeInfos-label" htmlFor="username">Username:</label>
+                <input className="changeInfos-input" type="text" value={username} onChange={(event) => setUsername(event.target.value)}/>
+            </div>
 
-            <label htmlFor="surname">Surname:</label>
-            <input id="surname" type="text" value={surname} onChange={(event) => setSurname(event.target.value)}/>
+            <div className="register-field">
+                <label className="changeInfos-label" htmlFor="firstname">Firstname:</label>
+                <input className="changeInfos-input" type="text" value={firstname} onChange={(event) => setFirstname(event.target.value)}/>
+            </div>
 
-            <label htmlFor="profilePic">Profile Picture:</label>
-            <input id="profilePic" type="text" value={profilePic} onChange={(event) => setProfilePic(event.target.value)}/>
+            <div className="register-field">
+                <label className="changeInfos-label" htmlFor="surname">Surname:</label>
+                <input className="changeInfos-input" type="text" value={surname} onChange={(event) => setSurname(event.target.value)}/>
+            </div>
 
-            <label htmlFor="password">Password:</label>
-            <input id="password" type="text" value={password} onChange={(event) => setPassword(event.target.value)}/>
+            <div className="register-field">
+                <label className="changeInfos-label" htmlFor="profilePic">Profile Picture:</label>
+                <input className="changeInfos-input" type="text" value={profilePic} onChange={(event) => setProfilePic(event.target.value)}/>
+            </div>
 
-            <button type="submit">Change Informations</button>
+            <div className="register-field">
+                <label className="changeInfos-label" htmlFor="password">Password:</label>
+                <input className="changeInfos-input" type="text" value={password} onChange={(event) => setPassword(event.target.value)}/>
+            </div>
+
+            <button id="changeInfos-submit" type="submit">Change Informations</button>
         </form>
         {!isValidInformations && <p>Informations not valid.</p>}
     </>)

@@ -13,7 +13,7 @@ function ProfileInformations(){
 
     return(<>
         <Link to={`/?userId=${currentUserId}`} className="title">
-            <img src="../../data/popcorn.ico" alt="error_loading_logo" /> CineGather
+            <img src="../../../data/popcorn.ico" alt="error_loading_logo" />
         </Link>
         <ChangeInfos />
         <Accept />

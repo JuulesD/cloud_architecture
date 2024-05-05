@@ -42,7 +42,7 @@ function Navbar(){
 
     if (currentUserId === null || currentUserId === -1){
         return (
-            <header className="first-header">
+            <header id="first-header">
                 <nav>
                     <Link to="/register" className="navbar-button" id="connect-button">
                         <div>
@@ -60,12 +60,15 @@ function Navbar(){
     }
 
     return(
-        <header>
+        <header id="second-header">
             <nav>
                 <Link to={`profileInformations/?userId=${currentUserId}`} className="profileInfos">
                     <div>
                         <img src="./data/profile.png" alt="error_loading_profile_image" /> Profile informations
                     </div>
+                </Link>
+                <Link to={`/?userId=${currentUserId}`}>
+                    <img id="second-header-logo" src="../../data/popcorn.ico" alt="error_loading_logo" />
                 </Link>
                 <div>
                     <label htmlFor="dropdown">Choose a group :</label>
