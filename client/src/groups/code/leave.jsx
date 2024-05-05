@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import '../styles/leave.css';
+
 function Leave({ currentUserId, currentGroupId }){
     
     const groupId = {
@@ -17,7 +19,7 @@ function Leave({ currentUserId, currentGroupId }){
     }
 
     return(<>
-        <img src="../../data/minus.png" alt="error_loading_add_image" onClick={leaveGroup}/>
+        <img id="leave-icon" src="../../data/minus.png" alt="error_loading_add_image" onClick={leaveGroup}/>
     </>)
 
 }

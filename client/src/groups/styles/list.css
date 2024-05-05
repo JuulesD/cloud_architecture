@@ -1,0 +1,38 @@
+#list-container {
+    border: 2px solid #000;
+    background-color: #ebb813;
+    border-radius: 15px;
+    padding: 10px;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+}
+
+  
+.list-bouton {
+    margin-left: 20px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+}
+  
+.list-bouton:hover {
+    background-color: #45a049;
+}
+
+
+.list-item {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#list-item-sep {
+    border-bottom: 2px solid black;
+    padding: 5px 0;
+}

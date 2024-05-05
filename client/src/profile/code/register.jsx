@@ -37,7 +37,7 @@ function Register(){
     };
 
     return (
-        <>
+        <div className="padding-center-logo">
             <Link to="/" className="title">
                 <img src="../../../data/popcorn.ico" alt="error_loading_logo" />
             </Link>
@@ -69,7 +69,7 @@ function Register(){
     
                 <button id="register-submit" type="submit">Create Account</button>
             </form>
-        </>
+        </div>
     );
     
 }

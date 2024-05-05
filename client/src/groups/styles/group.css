@@ -1,0 +1,32 @@
+#group-header {
+    background-color: rgba(250, 187, 43);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    padding: 10px;
+}
+
+#group-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 150px;
+}
+
+#group-logo {
+    text-decoration: none;
+    color: black;
+}
+
+#group-logo img {
+    width: 35px;
+    height: auto;
+    margin-right: 5px;
+}
+
+#groupInfosNav-logo {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+}

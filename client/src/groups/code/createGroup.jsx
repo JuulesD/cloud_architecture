@@ -2,6 +2,8 @@ import { React, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from "axios";
 
+import '../styles/createGroup.css';
+
 var currentUserId;
 
 function CreateGroup(){
@@ -29,17 +31,22 @@ function CreateGroup(){
         }
     };
 
-    return (<>
-        <Link to={`/?userId=${currentUserId}`} className="title">
-            <img src="../../data/popcorn.ico" alt="error_loading_logo" /> CineGather
-        </Link>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Name:</label>
-            <input id="name" type="text" value={name} onChange={(event) => setName(event.target.value)}/>
+    return (
+        <div className="padding-center-logo">
+            <Link to={`/?userId=${currentUserId}`} className="title">
+                <img src="../../data/popcorn.ico" alt="error_loading_logo" />
+            </Link>
+            <form id="createGroup-form" onSubmit={handleSubmit}>
+                
+                <div id="connect-field">
+                    <label id="createGroup-label" htmlFor="name">Name:</label>
+                    <input id="createGroup-input" type="text" value={name} onChange={(event) => setName(event.target.value)}/>
+                </div>
 
-            <button type="submit">Create</button>
-        </form>
-    </>)
+                <button id="createGroup-submit" type="submit">Create</button>
+            </form>
+        </div>
+    )
 }
 
 export default CreateGroup;

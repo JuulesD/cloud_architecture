@@ -1,11 +1,23 @@
 import { React, useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
+import '../styles/displayMembers.css';
+
 function DisplayMembers({ currentGroupId }){
     
     const [memberList, setMemberList] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+    const [currentGroupName, setcurrentGroupName] = useState("");
+
+    const groupName = useCallback(async() => {
+        try {
+            const response = await axios.post('http://localhost:3000/getGroupInfos', { groupId: currentGroupId });
+            setcurrentGroupName(response.data.name);
+        } catch (error) {
+            console.log('DISPLAY MEMBERS Error reading data :', error)
+        }
+    }, [currentGroupId]);
     
     const getMembers = useCallback(async () => {
         try {
@@ -32,9 +44,10 @@ function DisplayMembers({ currentGroupId }){
     }, [currentGroupId]);
 
     useEffect(() => {
+        groupName();
         getMembers();
         getIsAdmin();
-    }, [getMembers, getIsAdmin]);
+    }, [getMembers, getIsAdmin, groupName]);
 
     const passAdmin = async (member) => {
         const adminInfos = {
@@ -55,19 +68,19 @@ function DisplayMembers({ currentGroupId }){
     };
 
     return (
-        <>
-            <p id="title" onClick={toggleDropdown}>Group Name</p>
+        <div className="dispMem-container">
+            <p id="dispMem-groupName" onClick={toggleDropdown}>{currentGroupName}</p>
             {isDropdownVisible && (
-                <ul>
+                <ul id="dispMem-dropdown">
                     {memberList.map((member, index) => (
-                        <li key={index}>
+                        <li className="dispMem-member" key={index}>
                             {member}
                             {isAdmin && <button onClick={() => passAdmin(member)}>Pass Admin</button>}
                         </li>
                     ))}
                 </ul>
             )}
-        </>
+        </div>
     );
 }
 

@@ -1,0 +1,16 @@
+#groupInfo-logo {
+    width: 100px;
+    display: flex;
+    align-items: flex-start;
+    margin: 0 auto;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 50px;
+}
+
+#groupInfo-header-components {
+    display: inline-flex;
+    gap: 120px;
+    justify-content: center;
+    align-items:center;
+}

@@ -71,10 +71,24 @@
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    background-color: #fcdd1c;
+    color: #333;
+    font-size: 16px;
+    width: 200px;
+}
+
+#dropdown:focus {
+    outline: none;
+    border-color: #f6ef0b;
 }
 
 #dropdown option {
     padding: 8px;
-    background-color: #fff;
+    background-color: #dec31d;
     color: #333;
+    font-size: 16px;
+}
+
+#dropdown option:hover {
+    background-color: #f6ef0b;
 }

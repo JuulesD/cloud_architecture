@@ -36,8 +36,8 @@ function Connect(){
     };
 
     return (
-        <>
-            <Link to="/" className="title">
+        <div className="padding-center-logo">
+            <Link to="/">
                 <img src="../../../data/popcorn.ico" alt="error_loading_logo" />
             </Link>
             <form id="connect-form" onSubmit={handleSubmit}>
@@ -58,7 +58,7 @@ function Connect(){
                 <button id="connect-submit" type="submit">Connect</button>
             </form>
             {errorMessage && (<p>{errorMessage}</p>)}
-        </>
+        </div>
     );
        
 }

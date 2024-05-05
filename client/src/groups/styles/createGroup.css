@@ -1,33 +1,30 @@
-#connect-form {
+#createGroup-form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.padding-center-logo {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.connect-field {
+#createGroup-field {
     margin-bottom: 20px;
 }
 
-.connect-label {
+#createGroup-label {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-.connect-input {
+#createGroup-input {
     width: 100%;
     padding: 5px;
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    margin-bottom: 20px;
 }
 
-#connect-submit {
+
+#createGroup-submit {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -37,6 +34,6 @@
     cursor: pointer;
 }
 
-#connect-submit:hover {
+#createGroup-submit:hover {
     background-color: #0056b3;
 }

@@ -1,0 +1,39 @@
+#dispMem-groupName {
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.dispMem-container {
+    position: relative;
+}
+
+#dispMem-groupName:hover, .dispMem-member:hover {
+    background-color: #deb318;
+}
+
+.dispMem-member {
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#dispMem-dropdown {
+
+    border: 2px solid #000;
+    background-color: #ebb813;
+    border-radius: 15px;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+
+    top: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}

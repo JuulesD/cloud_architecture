@@ -1,6 +1,8 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 
+import "../styles/accept.css";
+
 function Accept(){
 
     const choose = async (groupId, acceptance) => {
@@ -41,19 +43,25 @@ function Accept(){
         getUserWaitingsInfos();
     }, [])
 
-    return(<>
-        <option key={-1} value={-1}></option>
+    return (
+        <div className="invitation-container">
+            <option key={-1} value={-1}></option>
             {invitations.map(invitation => (
                 invitation.groupId !== -1 && (
-                <div key={invitation.groupId} >
-                    <option value={invitation.groupId}>
-                        You're invited to join {invitation.groupName} by {invitation.username}.
-                    </option>
-                    <button onClick={() => choose(invitation.groupId, true)}>Accepter</button>
-                    <button onClick={() => choose(invitation.groupId, false)}>Refuser</button>
-                </div>)
+                    <div id='invitation-infos' key={invitation.groupId}>
+                        <p className="invitation-message">
+                            You're invited to join <strong>{invitation.groupName}</strong> by <strong>{invitation.username}</strong>.
+                        </p>
+                        <div className="invitation-buttons">
+                            <button className="accept-button" onClick={() => choose(invitation.groupId, true)}>Accept</button>
+                            <button className="reject-button" onClick={() => choose(invitation.groupId, false)}>Reject</button>
+                        </div>
+                    </div>
+                )
             ))}
-    </>)
+        </div>
+    );
+    
 }
 
 export default Accept;

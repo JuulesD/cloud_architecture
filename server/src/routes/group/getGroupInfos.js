@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { readFile, getGroupIndexFromId } = require("../usefulFunctions");
 
-router.get("/",async (request,response,_next)=>{
+router.post("/",async (request,response,_next)=>{
     let groups = readFile("../data/groups.json");
     let groupIndex = getGroupIndexFromId(request.body.groupId,groups);
     response.json(groups[groupIndex]);

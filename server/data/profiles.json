@@ -9,15 +9,19 @@
     "groups": [
       {
         "groupId": 1,
-        "status": "member",
-        "vote": 1
-      },
-      {
-        "groupId": 3,
         "status": "member"
       }
     ],
-    "waiting": []
+    "waiting": [
+      {
+        "userId": 3,
+        "groupId": 4
+      },
+      {
+        "userId": 3,
+        "groupId": 4
+      }
+    ]
   },
   {
     "userId": 2,

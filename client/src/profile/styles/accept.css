@@ -1,0 +1,53 @@
+.invitation-container {
+    border: 2px solid #000;
+    background-color: #ebb813;
+    border-radius: 15px;
+    padding: 10px;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#invitation-infos {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.invitation-message {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.invitation-buttons {
+    padding: 5px;
+    display: flex;
+}
+
+.accept-button, .reject-button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accept-button:hover {
+    background-color: #28a745;
+}
+
+.reject-button:hover {
+    background-color: #a71e2c;
+}
+
+.accept-button {
+    background-color: #29e354;
+    color: #fff;
+}
+
+.reject-button {
+    background-color: #dc3545;
+    color: #fff;
+}

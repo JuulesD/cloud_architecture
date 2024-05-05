@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 import Navbar from './navbar';
-import './body.css';
+
+import '../styles/body.css';
 
 function Body(){
 
@@ -10,18 +11,18 @@ function Body(){
     const userId = searchParams.get('userId');
 
     return (
-        <div>
+        <>
             <Navbar />
             {!userId && (
-                <div className="title-container">
-                    <Link to="/" className="title">
+                <div id="bodyhome-container">
+                    <Link to="/" id="bodyhome-title">
                         <img src="../../data/popcorn.ico" alt="error_loading_logo" />
-                        <div className="title-text">CineGather</div>
-                        <div className="description-text">CineGather, the app for your best cine party !!!</div>
+                        <div id="bodyhome-title-text">CineGather</div>
+                        <div id="bodyhome-description-text">CineGather, the app for your best cine party !!!</div>
                     </Link>
                 </div>
             )}
-        </div>
+        </>
     );
 }
 

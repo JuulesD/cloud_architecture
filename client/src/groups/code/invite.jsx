@@ -1,6 +1,8 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 
+import '../styles/invite.css';
+
 function Invite({ currentGroupId }){
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -36,13 +38,12 @@ function Invite({ currentGroupId }){
     }
     
     return(<>
-        <div className="searchContainer">
-            <img src="../../data/add.png" alt="error_loading_add_image" className="searchIcon" onClick={toggleSearchAdd} />
+        <div id="invite-container">
+            <img id="invite-img" src="../../data/add.png" alt="error_loading_add_image"onClick={toggleSearchAdd} />
             {isSearchVisibleAdd && (
-                <div className="searchBox">
-                {/* Place your search input or other search components here */}
-                <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-                <button onClick={invite}>Invite</button>
+                <div id="invite-searchBox">
+                <input id="invite-searchBox-input" type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                <button id="invite-searchBox-bouton" onClick={invite}>Invite</button>
                 </div>
             )}
         </div>

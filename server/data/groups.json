@@ -3,9 +3,9 @@
     "groupId": 1,
     "name": "The Locals",
     "membersId": [
-      1,
       2,
-      3
+      3,
+      1
     ],
     "list": [
       {
@@ -51,8 +51,7 @@
     "groupId": 3,
     "name": "rft",
     "membersId": [
-      3,
-      1
+      3
     ],
     "list": [],
     "polls": []
