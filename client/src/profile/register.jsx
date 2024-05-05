@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
+import './register.css';
+
 function Register(){
 
     const [username, setUsername] = useState('');
@@ -34,29 +36,42 @@ function Register(){
         }
     };
 
-    return (<>
-        <Link to="/" className="title">
-            <img src="../../data/popcorn.ico" alt="error_loading_logo" /> CineGather
-        </Link>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username:</label>
-            <input id="username" type="text" value={username} onChange={(event) => setUsername(event.target.value)}/>
-
-            <label htmlFor="firstname">Firstname:</label>
-            <input id="firstname" type="text" value={firstname} onChange={(event) => setFirstname(event.target.value)}/>
-
-            <label htmlFor="surname">Surname:</label>
-            <input id="surname" type="text" value={surname} onChange={(event) => setSurname(event.target.value)}/>
-
-            <label htmlFor="profilePic">Profile Picture:</label>
-            <input id="profilePic" type="text" value={profilePic} onChange={(event) => setProfilePic(event.target.value)}/>
-
-            <label htmlFor="password">Password:</label>
-            <input id="password" type="text" value={password} onChange={(event) => setPassword(event.target.value)}/>
-
-            <button type="submit">Create Account</button>
-        </form>
-    </>)
+    return (
+        <>
+            <Link to="/" className="title">
+                <img src="../../data/popcorn.ico" alt="error_loading_logo" />
+            </Link>
+            <form id="register-form" onSubmit={handleSubmit}>
+                <div className="register-field">
+                    <label htmlFor="username" className="register-label">Username:</label>
+                    <input className='register-input' type="text" value={username} onChange={(event) => setUsername(event.target.value)}/>
+                </div>
+    
+                <div className="register-field">
+                    <label htmlFor="firstname" className="register-label">Firstname:</label>
+                    <input className='register-input' type="text" value={firstname} onChange={(event) => setFirstname(event.target.value)}/>
+                </div>
+    
+                <div className="register-field">
+                    <label htmlFor="surname" className="register-label">Surname:</label>
+                    <input className='register-input' type="text" value={surname} onChange={(event) => setSurname(event.target.value)}/>
+                </div>
+    
+                <div className="register-field">
+                    <label htmlFor="profilePic" className="register-label">Profile Picture:</label>
+                    <input className='register-input' type="text" value={profilePic} onChange={(event) => setProfilePic(event.target.value)}/>
+                </div>
+    
+                <div className="register-field">
+                    <label htmlFor="password" className="register-label">Password:</label>
+                    <input className='register-input' type="text" value={password} onChange={(event) => setPassword(event.target.value)}/>
+                </div>
+    
+                <button id="register-submit" type="submit">Create Account</button>
+            </form>
+        </>
+    );
+    
 }
 
 export default Register;

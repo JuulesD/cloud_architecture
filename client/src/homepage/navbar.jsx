@@ -2,6 +2,8 @@ import { React, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
+import './navbar.css';
+
 var currentUserId = -1;
 
 function Navbar(){
@@ -40,19 +42,16 @@ function Navbar(){
 
     if (currentUserId === null || currentUserId === -1){
         return (
-            <header>
+            <header className="first-header">
                 <nav>
-                    <Link to="/" className="title">
-                        <img src="../../data/popcorn.ico" alt="error_loading_logo" /> CineGather
-                    </Link>
-                    <Link to="/register">
+                    <Link to="/register" className="navbar-button" id="connect-button">
                         <div>
-                            <img src="./data/profile.jpg" alt="error_loading_profile_image" /> Register
+                            <img src="./data/profile.png" alt="error_loading_profile_image" /> Register
                         </div>
                     </Link>
-                    <Link to="/connect">
+                    <Link to="/connect" className="navbar-button" id="register-button">
                         <div>
-                            <img src="./data/profile.jpg" alt="error_loading_profile_image" /> Connect
+                            <img src="./data/profile.png" alt="error_loading_profile_image" /> Connect
                         </div>
                     </Link>
                 </nav>
@@ -65,7 +64,7 @@ function Navbar(){
             <nav>
                 <Link to={`profileInformations/?userId=${currentUserId}`} className="profileInfos">
                     <div>
-                        <img src="./data/profile.jpg" alt="error_loading_profile_image" /> Profile informations
+                        <img src="./data/profile.png" alt="error_loading_profile_image" /> Profile informations
                     </div>
                 </Link>
                 <div>

@@ -1,0 +1,32 @@
+.first-header {
+    background-color: rgba(250, 187, 43);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.first-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 150px;
+}
+
+.first-header nav a {
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.first-header nav img {
+    width: 35px;
+    height: auto;
+    margin-right: 5px;
+}

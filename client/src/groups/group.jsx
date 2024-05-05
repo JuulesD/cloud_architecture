@@ -26,7 +26,6 @@ function Group(){
                 <Invite currentGroupId={currentGroupId}/>
                 <Leave currentUserId={currentUserId} currentGroupId={currentGroupId}/>
                 <img src="../../data/list.png" alt="error_loading_add_image"/>
-                
             </nav>
         </header>
     </>)
