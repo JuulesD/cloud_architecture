@@ -8,15 +8,18 @@
     cursor: pointer;
 }
 
-#invite-searchBox {
+#invite-box {
     position: absolute;
-    top: 100%;
-    right: 0;
+    right:-240%;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
     z-index: 1000;
+}
+
+#invite-searchBox {
+    display: inline-flex;
 }
 
 #invite-searchBox-input {
@@ -34,4 +37,8 @@
     border: none;
     border-radius: 3px;
     cursor: pointer;
+}
+
+#invite-message {
+    color:red
 }

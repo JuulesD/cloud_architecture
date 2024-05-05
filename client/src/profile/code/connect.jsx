@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +11,14 @@ function Connect(){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+        setErrorMessage("");
+        }, 3000);
+
+        return () => clearTimeout(timeout);
+    }, [errorMessage]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -51,13 +59,9 @@ function Connect(){
                     <input className="connect-input" type="text" value={password} onChange={(event) => setPassword(event.target.value)}/>
                 </div>
     
-                {currentUserId !== -1 ? (
-                    <span>Profile informations</span>
-                ) : null}
-    
                 <button id="connect-submit" type="submit">Connect</button>
             </form>
-            {errorMessage && (<p>{errorMessage}</p>)}
+            {errorMessage && (<p id='connect-errorMessage'>{errorMessage}</p>)}
         </div>
     );
        

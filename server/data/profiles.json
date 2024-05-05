@@ -10,18 +10,14 @@
       {
         "groupId": 1,
         "status": "member"
-      }
-    ],
-    "waiting": [
-      {
-        "userId": 3,
-        "groupId": 4
       },
       {
-        "userId": 3,
-        "groupId": 4
+        "groupId": 6,
+        "status": "admin",
+        "vote": 1
       }
-    ]
+    ],
+    "waiting": []
   },
   {
     "userId": 2,
@@ -33,7 +29,7 @@
     "groups": [
       {
         "groupId": 1,
-        "status": "member",
+        "status": "admin",
         "vote": 1
       },
       {
@@ -42,7 +38,16 @@
         "vote": 1
       }
     ],
-    "waiting": []
+    "waiting": [
+      {
+        "userId": 3,
+        "groupId": 3
+      },
+      {
+        "userId": 1,
+        "groupId": 1
+      }
+    ]
   },
   {
     "userId": 3,
@@ -54,7 +59,7 @@
     "groups": [
       {
         "groupId": 1,
-        "status": "admin",
+        "status": "member",
         "vote": 1
       },
       {

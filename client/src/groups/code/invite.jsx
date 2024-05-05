@@ -7,6 +7,7 @@ function Invite({ currentGroupId }){
 
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearchVisibleAdd, setIsSearchVisibleAdd] = useState(false);
+    const [hasReceived, sethasReceived] = useState(true);
 
     const toggleSearchAdd = () => {
         setIsSearchVisibleAdd(!isSearchVisibleAdd);
@@ -31,7 +32,12 @@ function Invite({ currentGroupId }){
         try {
             const response = await axios.post('http://localhost:3000/invitation',inviteInfos);
             setSearchQuery('');
-            setMessage(response.data);
+            if (response.data !== "Invitation successfully send !"){
+                setMessage(response.data);
+                sethasReceived(false);
+            }
+            else
+                setIsSearchVisibleAdd(false);
         } catch (error) {
             console.error('Error reading data :', error);
         }
@@ -41,10 +47,16 @@ function Invite({ currentGroupId }){
         <div id="invite-container">
             <img id="invite-img" src="../../data/add.png" alt="error_loading_add_image"onClick={toggleSearchAdd} />
             {isSearchVisibleAdd && (
-                <div id="invite-searchBox">
-                <input id="invite-searchBox-input" type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-                <button id="invite-searchBox-bouton" onClick={invite}>Invite</button>
+                <div id="invite-box">
+                    <div id="invite-searchBox">
+                        <input id="invite-searchBox-input" type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                        <button id="invite-searchBox-bouton" onClick={invite}>Invite</button>
+                    </div>
+                    <div id="invite-message">
+                        {!hasReceived && (<p>{message}</p>)}
+                    </div>
                 </div>
+                
             )}
         </div>
     </>)
