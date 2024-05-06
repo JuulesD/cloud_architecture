@@ -44,9 +44,34 @@ router.post("/",async (request,response,_next)=>{
                 groups[groupIndex].membersId.splice(i,1);
                 //User is removed from the groupList.
 
-                if (groups[groupIndex].membersId.length === 0)
+                if (groups[groupIndex].membersId.length === 0){
+
                     groups.splice(groupIndex,1);
+
+                    for (let j = 0; j!=profiles.length;j++){
+                        for (let k = 0; k<profiles[j].waiting.length;k++){
+                            if (profiles[j].waiting[k].groupId === request.body.groupId)
+                                profiles[j].waiting.splice(k,1);
+                        }
+                    }
+                    //Remove invitations.
+
+                }
                 //If the user was alone in the group, the group is removed.
+                //Every invitation to this group is destroyed too.
+
+                else if (userProfile.groups[groupProfileIndex].status === "admin"){
+                //If the user wasn't alone and was the admin of the group, then a new admin is choosed, randomly.
+
+                    let newAdminIndex;
+
+                    if (groups[groupIndex].membersId[0] !== currentUserId)
+                        newAdminIndex = getUserIndexFromId(groups[groupIndex].membersId[0],profiles);
+                    else
+                        newAdminIndex = getUserIndexFromId(groups[groupIndex].membersId[groups[groupIndex].membersId.length-1],profiles);
+
+                    profiles[newAdminIndex].groups[groupProfileIndex].status = "admin";
+                }
 
                 userProfile.groups.splice(groupProfileIndex,1);
                 //Group is removed from user groupList.

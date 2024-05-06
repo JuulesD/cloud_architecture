@@ -6,6 +6,7 @@
 
 .dispMem-container {
     position: relative;
+    display: inline-block;
 }
 
 #dispMem-groupName:hover, .dispMem-member:hover {
@@ -21,16 +22,15 @@
 }
 
 #dispMem-dropdown {
-
     border: 2px solid #000;
     background-color: #ebb813;
     border-radius: 15px;
     width: fit-content;
-    margin: 0 auto;
     text-align: center;
-
     position: absolute;
-
     list-style-type: none;
     padding: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(50%);
 }

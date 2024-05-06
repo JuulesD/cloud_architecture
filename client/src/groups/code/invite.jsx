@@ -28,7 +28,6 @@ function Invite({ currentGroupId }){
             "username":searchQuery,
             "groupId":currentGroupId
         }
-        console.log(inviteInfos);
         try {
             const response = await axios.post('http://localhost:3000/invitation',inviteInfos);
             setSearchQuery('');

@@ -22,7 +22,7 @@ function Group(){
                 <Link to={`/?userId=${currentUserId}`} id="group-logo">
                     <img src="../../data/popcorn.ico" alt="error_loading_logo" />
                 </Link>
-                <DisplayMembers currentGroupId={currentGroupId}/>
+                <DisplayMembers currentUserId={currentUserId} currentGroupId={currentGroupId}/>
                 <Invite currentGroupId={currentGroupId}/>
                 <Leave currentUserId={currentUserId} currentGroupId={currentGroupId}/>
                 <Link to={`/groupInfosNav/?userId=${currentUserId}&groupId=${currentGroupId}`}>

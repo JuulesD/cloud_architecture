@@ -23,32 +23,42 @@ router.post("/",async (request,response,_next)=>{
             let userProfile = profiles[receiverIndex];
             //Current user profile.
 
-            for (j=0;j!=userProfile.groups.length;j++){
+            let j = 0;
+            while (j!=userProfile.groups.length){
                 if (userProfile.groups[j].groupId === request.body.groupId){
                     response.send("User already in the group.");
                     break;
                 }
+                j++;
             }
 
-            for (j=0;j!=userProfile.waiting.length;j++){
-                if (userProfile.waiting[j].groupId === request.body.groupId){
-                    response.send("User already received an invitation.");
-                    break;
+            if (j===userProfile.groups.length){
+                j = 0;
+
+                while (j!=userProfile.waiting.length){
+                    if (userProfile.waiting[j].groupId === request.body.groupId){
+                        response.send("User already received an invitation.");
+                        break;
+                    }
+                    j++
+                }
+
+                if (j===userProfile.waiting.length){
+
+                    let invitation = {
+                        "userId":currentUserId,
+                        "groupId":request.body.groupId
+                    };
+                    //New invitation created.
+        
+                    userProfile.waiting.push(invitation);
+        
+                    writeFile("../data/profiles.json",profiles);
+                    //Update database.
+                    
+                    response.send("Invitation successfully send !");
                 }
             }
-
-            let invitation = {
-                "userId":currentUserId,
-                "groupId":request.body.groupId
-            };
-            //New invitation created.
-
-            userProfile.waiting.push(invitation);
-
-            writeFile("../data/profiles.json",profiles);
-            //Update database.
-            
-            response.send("Invitation successfully send !");
         }
         response.status(200);
     }

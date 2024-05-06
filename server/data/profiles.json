@@ -8,10 +8,6 @@
     "password": "mypsw",
     "groups": [
       {
-        "groupId": 1,
-        "status": "member"
-      },
-      {
         "groupId": 6,
         "status": "admin",
         "vote": 1
@@ -38,16 +34,7 @@
         "vote": 1
       }
     ],
-    "waiting": [
-      {
-        "userId": 3,
-        "groupId": 3
-      },
-      {
-        "userId": 1,
-        "groupId": 1
-      }
-    ]
+    "waiting": []
   },
   {
     "userId": 3,
@@ -76,6 +63,10 @@
         "groupId": 4,
         "status": "admin",
         "vote": 1
+      },
+      {
+        "groupId": 6,
+        "status": "member"
       }
     ],
     "waiting": []

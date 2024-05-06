@@ -3,7 +3,7 @@ import axios from "axios";
 
 import '../styles/displayMembers.css';
 
-function DisplayMembers({ currentGroupId }){
+function DisplayMembers({ currentUserId, currentGroupId }){
     
     const [memberList, setMemberList] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
@@ -74,8 +74,8 @@ function DisplayMembers({ currentGroupId }){
                 <ul id="dispMem-dropdown">
                     {memberList.map((member, index) => (
                         <li className="dispMem-member" key={index}>
-                            {member}
-                            {isAdmin && <button onClick={() => passAdmin(member)}>Pass Admin</button>}
+                            {member.name}
+                            {isAdmin && member.userId !== currentUserId && <button onClick={() => passAdmin(member.name)}>Pass Admin</button>}
                         </li>
                     ))}
                 </ul>

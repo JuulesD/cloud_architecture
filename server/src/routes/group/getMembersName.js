@@ -9,8 +9,14 @@ router.post("/",async (request,response,_next)=>{
     let groupIndex = getGroupIndexFromId(request.body.groupId,groups);
 
     let membersList = [];
-    for (let i = 0;i!=groups[groupIndex].membersId.length;i++)
-        membersList.push(profiles[getUserIndexFromId(groups[groupIndex].membersId[i],profiles)].username)
+    for (let i = 0;i!=groups[groupIndex].membersId.length;i++){
+        let currentProfileIndex = getUserIndexFromId(groups[groupIndex].membersId[i],profiles);
+        const member = {
+            userId:profiles[currentProfileIndex].userId,
+            name:profiles[currentProfileIndex].username
+        }
+        membersList.push(member);
+    }
 
     response.json(membersList);
     response.status(200);
