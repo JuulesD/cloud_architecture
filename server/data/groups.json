@@ -4,7 +4,8 @@
     "name": "The Locals",
     "membersId": [
       2,
-      3
+      3,
+      1
     ],
     "list": [
       {
@@ -25,14 +26,19 @@
     ],
     "polls": [
       {
-        "movie": "OSS 117",
-        "nbVote": 0,
-        "votersId": []
+        "name": "OSS 117",
+        "nbVote": 2,
+        "votersId": [
+          2,
+          1
+        ]
       },
       {
-        "movie": "The lord of rings",
-        "nbVote": 0,
-        "votersId": []
+        "name": "The lord of rings",
+        "nbVote": 1,
+        "votersId": [
+          3
+        ]
       }
     ]
   },
@@ -44,43 +50,20 @@
       3
     ],
     "list": [],
-    "polls": []
-  },
-  {
-    "groupId": 3,
-    "name": "rft",
-    "membersId": [
-      3
-    ],
-    "list": [],
-    "polls": []
-  },
-  {
-    "groupId": 4,
-    "name": "test",
-    "membersId": [
-      3
-    ],
-    "list": [],
-    "polls": []
-  },
-  {
-    "groupId": 5,
-    "name": "ahahahaha",
-    "membersId": [
-      4
-    ],
-    "list": [],
-    "polls": []
-  },
-  {
-    "groupId": 6,
-    "name": "My New Group",
-    "membersId": [
-      1,
-      3
-    ],
-    "list": [],
-    "polls": []
+    "polls": [
+      {
+        "name": "Scarface",
+        "nbVote": 2,
+        "votersId": [
+          3,
+          2
+        ]
+      },
+      {
+        "name": "The Godfather",
+        "nbVote": 0,
+        "votersId": []
+      }
+    ]
   }
 ]

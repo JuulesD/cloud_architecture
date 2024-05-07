@@ -18,6 +18,7 @@ function Invite({ currentGroupId }){
     useEffect(() => {
         const timeout = setTimeout(() => {
         setMessage("");
+        sethasReceived(true);
         }, 3000);
 
         return () => clearTimeout(timeout);
@@ -51,11 +52,10 @@ function Invite({ currentGroupId }){
                         <input id="invite-searchBox-input" type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                         <button id="invite-searchBox-bouton" onClick={invite}>Invite</button>
                     </div>
-                    <div id="invite-message">
-                        {!hasReceived && (<p>{message}</p>)}
-                    </div>
+                    {!hasReceived && <div id="invite-message">
+                        <p>{message}</p>
+                    </div>}
                 </div>
-                
             )}
         </div>
     </>)

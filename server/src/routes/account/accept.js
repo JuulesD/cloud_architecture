@@ -28,7 +28,8 @@ router.put("/",async (request,response,_next)=>{
 
             let newGroup = {
                 "groupId": groups[groupIndex].groupId,
-                "status": "member"
+                "status": "member",
+                "vote":1
             };
             userProfile.groups.push(newGroup);
             //Group added to user group list.

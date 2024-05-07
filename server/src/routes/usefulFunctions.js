@@ -82,5 +82,12 @@ function getUserIndexFromUsername(username,profiles){
     return -1;
 }
 
+function getGroupIndexFromName(name, groups){
+    for (l=0;l!=profiles.length;l++)
+        if (groups[l].name === name)
+            return l;
+    return -1;
+}
+
 module.exports = { getUserIndexFromId, getGroupIndexFromId, getWaitingGroupIndexFromId,
                    readFile, writeFile, linkApi, verifInput, verifPassword, getUserIndexFromUsername };

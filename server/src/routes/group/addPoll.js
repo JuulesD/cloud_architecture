@@ -20,7 +20,7 @@ function addPoll(groups, request){
 }
 
 router.post("/",async (request,response,_next)=>{
-    let currentUserId = require("../account/connect")();
+    let {currentUserId} = require("../account/connect")();
     //Connected user.
 
     let profiles = readFile("../data/profiles.json");
@@ -29,20 +29,12 @@ router.post("/",async (request,response,_next)=>{
     let idIndex = getUserIndexFromId(currentUserId,profiles);
     if (idIndex !=-1){
 
-        let groupIndex = getGroupIndexFromId(request.body.groupId,profiles[idIndex].groups)
-        if (profiles[idIndex].groups[groupIndex].status != "admin"){
-            //Only the admin of the group can add a poll.
-            response.send("You don't have the right to add a poll.")
-            response.status(200);
-        }
-        else{
-            let groups = readFile("../data/groups.json");
-            //Array of every group.
-            
-            addPoll(groups, request);
-            response.send("Group vote added.")
-            response.status(200);
-        }
+        let groups = readFile("../data/groups.json");
+        //Array of every group.
+        
+        addPoll(groups, request);
+        response.send("Group vote added.")
+        response.status(200);
     }
     else{
         response.send("No account found.")
@@ -55,7 +47,7 @@ module.exports = router;
 
 /*body request:
 {
-    "groupId":"...",
+    "groupId":...,
     "name":"..."
 }
 */

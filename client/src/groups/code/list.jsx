@@ -35,7 +35,7 @@ function List({currentGroupId}){
                     </li>
                 ))}
             </ul>
-            <button className="list-bouton">Add Item</button>
+            <button className="list-bouton">Add Category</button>
         </div>
     );
 }

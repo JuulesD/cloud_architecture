@@ -5,12 +5,12 @@
     "firstname": "Jules",
     "surname": "Dubois",
     "profilePic": "jules_dubois.jpg",
-    "password": "mypsw",
+    "password": "mypsw123",
     "groups": [
       {
-        "groupId": 6,
+        "groupId": 1,
         "status": "admin",
-        "vote": 1
+        "vote": 0
       }
     ],
     "waiting": []
@@ -21,52 +21,38 @@
     "firstname": "Benjamin",
     "surname": "Sever",
     "profilePic": "benjamin_sever.jpg",
-    "password": "benpsw",
+    "password": "benpsw123",
     "groups": [
       {
         "groupId": 1,
-        "status": "admin",
-        "vote": 1
+        "status": "member",
+        "vote": 0
       },
       {
         "groupId": 2,
-        "status": "admin",
-        "vote": 1
+        "status": "member",
+        "vote": 0
       }
     ],
     "waiting": []
   },
   {
     "userId": 3,
-    "username": "fifaGoat",
+    "username": "BorTheBest",
     "firstname": "Bor",
     "surname": "Sullin",
     "profilePic": "bor_sullin.jpg",
-    "password": "borpsw",
+    "password": "borpsw123",
     "groups": [
       {
         "groupId": 1,
         "status": "member",
-        "vote": 1
+        "vote": 0
       },
       {
         "groupId": 2,
-        "status": "member",
-        "vote": 1
-      },
-      {
-        "groupId": 3,
         "status": "admin",
-        "vote": 1
-      },
-      {
-        "groupId": 4,
-        "status": "admin",
-        "vote": 1
-      },
-      {
-        "groupId": 6,
-        "status": "member"
+        "vote": 0
       }
     ],
     "waiting": []

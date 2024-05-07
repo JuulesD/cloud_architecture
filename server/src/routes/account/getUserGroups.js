@@ -11,11 +11,13 @@ router.get("/",async (_request,response,_next)=>{
     let groupInfo = [];
 
     let groups = readFile("../data/groups.json");
+
     for (let i = 0;i!=profiles[userIndex].groups.length;i++){
         let groupIndex = getGroupIndexFromId(profiles[userIndex].groups[i].groupId,groups);
         groupInfo.push({
             "groupId":profiles[userIndex].groups[i].groupId,
-            "name":groups[groupIndex].name
+            "name":groups[groupIndex].name,
+            "vote":groups[groupIndex].vote
         })
     }
     

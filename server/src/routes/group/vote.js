@@ -7,7 +7,7 @@ function validVote(groups, profiles, group, groupIndexInProfile, userProfile, re
         let poll = group.polls[i];
         //Current poll checked.
 
-        if (poll.movie === request.body.name){
+        if (poll.name === request.body.name){
             poll.nbVote +=1;
             //Vote for the movie is augmented.
 
@@ -20,6 +20,7 @@ function validVote(groups, profiles, group, groupIndexInProfile, userProfile, re
             writeFile("../data/groups.json",groups)
             writeFile("../data/profiles.json",profiles)
             //Files are updated.
+
             return 0;
         }
     }
@@ -52,14 +53,15 @@ function vote(userProfile, profiles, groups, request){
                     poll.votersId.splice(j,1);
                     //Member of the poll deleted.
 
-                    return validVote(group, profiles, group, groupIndexInProfile, userProfile, request);
+                    return validVote(groups, profiles, group, groupIndexInProfile, userProfile, request, true);
                 }
         }
     }
 }
 
 router.post("/",async (request,response,_next)=>{
-    let currentUserId = require("../account/connect")();
+
+    let {currentUserId} = require("../account/connect")();
     //Connected user.
 
     let profiles = readFile("../data/profiles.json");
@@ -75,7 +77,7 @@ router.post("/",async (request,response,_next)=>{
         let done = vote(userProfile, profiles, groups, request);
         if (done === -1)
             response.send("Poll not existed.")
-        else
+        else 
             response.send("Vote added.")
         response.status(200);
     }

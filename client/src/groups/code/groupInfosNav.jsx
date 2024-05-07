@@ -24,7 +24,7 @@ function GroupInfosNav(){
             </div>
             <div id="groupInfo-header-components">
                 <List currentGroupId={currentGroupId}/>
-                <Vote currentGroupId={currentGroupId}/>
+                <Vote currentUserId={currentUserId} currentGroupId={currentGroupId}/>
             </div>
         </div>
     )
